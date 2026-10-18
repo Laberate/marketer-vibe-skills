@@ -4,9 +4,14 @@ Portable plain-Markdown specialist skills for the MarketerVibe UGC workflow.
 
 ## Skills
 
-- `skills/ugc-ad-strategy/SKILL.md` — product/audience diagnosis, optional research, awareness, angles, hooks, natural UGC copy, claim grounding, and the compact creative-strategy handoff.
-- `skills/ugc-visual-production/SKILL.md` — fast-cut UGC visual production: purposeful short visual beats, simple believable actions, product-use progressions, controlled shot variety, B-roll, payoffs, edit-ready keyframes, and VO-friendly pacing.
-- `skills/image-fidelity/SKILL.md` — photorealism, product invariants, physical scale, material-light integration, human/contact realism, camera realism, environment integration, and a lean QA gate.
+- `skills/ugc-ad-strategy/SKILL.md` — **V1.4.0**: product/audience diagnosis, optional research, awareness, angles, hooks, natural UGC copy, claim grounding, and the compact creative-strategy handoff.
+- `skills/ugc-visual-production/SKILL.md` — **V1.1.0**: fast-cut UGC visual production: purposeful short visual beats, simple believable actions, product-use progressions, controlled shot variety, B-roll, payoffs, edit-ready keyframes, and VO-friendly pacing.
+- `skills/image-fidelity/SKILL.md` — **V1.0.0**: photorealism, product invariants, physical scale, material-light integration, human/contact realism, camera realism, environment integration, and a lean QA gate.
+
+## Strategy and production safeguards
+
+- Options A/B/C must differ in their actual visual story—including hook, shot progression, emphasis, and payoff—not just buyer copy or voiceover. They should remain distinct when compared with the sound off.
+- When a generic supporting prop is missing, use a consistent unbranded fallback with stable appearance and state across beats rather than blocking the strategy or introducing static filler.
 
 ## When each skill is used in the UGC workflow
 

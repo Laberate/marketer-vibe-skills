@@ -5,10 +5,10 @@ license: Proprietary
 compatibility: Portable plain-Markdown Agent Skill. Works without GitHub, plugins, external tools, paid services, or access to a specific image/video engine.
 metadata:
   author: MarketerVibe
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
-# MarketerVibe UGC Visual Production Skill V1.0
+# MarketerVibe UGC Visual Production Skill V1.1
 
 ## 1. Purpose
 
@@ -80,7 +80,19 @@ Examples (not mandatory sequences):
 
 Not every shot needs a product interaction. A useful emotional or context shot can support the buyer story. But avoid unsupported product appearances, impossible use states, and superficial mechanics-as-sales-pitch.
 
-## 5. Every beat has one primary job
+## 5. Make alternative directions look like different advertisements
+
+The Strategist may request three alternative concepts for the same product. Apply **visual story divergence**, not just different headlines:
+
+- Different visual opening mechanisms (creator situation, action already underway, product detail, relevant problem, feature comparison).
+- Different **shot journey** and which stage of use appears early or late.
+- Different emphasis on face/creator, hands/action, tactile macro and lifestyle context.
+- Different type of payoff and VO-supporting B-roll, chosen to fit the persuasion angle.
+- Different pacing character when appropriate (e.g. quick demonstrative cuts vs sensory close-ups), without forcing complexity or unnecessary clip counts.
+
+Do not rely on generic `show product -> open product -> apply/use -> show product` for every concept. If A/B/C share the same first three beats, same center and same payoff, they are too similar. Redesign the sequence while retaining true product usage. Distinctiveness must arise from useful story choices; do not insert random angles, ungrounded props or impossible actions for novelty.
+
+## 6. Every beat has one primary job
 
 Common functional beat families:
 
@@ -105,7 +117,7 @@ Each beat should answer:
 
 If a beat duplicates an earlier shot without adding value, merge or drop it.
 
-## 6. Beat count, information density and pacing
+## 7. Beat count, information density and pacing
 
 Default planning range: **4–8 useful beats**, typically **5–6**, for many 20–30 second short-form ads. This is a starting point, not a quota.
 
@@ -121,7 +133,7 @@ Useful pacing patterns include:
 
 **Editing creates energy** through meaningful cuts, shot distance changes, and progression. It should not depend on excessive hand waving, forced facial acting, zoom chaos, or a person speaking continuously to the camera.
 
-## 7. Cut over complexity
+## 8. Cut over complexity
 
 A single shot should generally contain **one simple physical action**, sometimes one natural follow-through. A high-risk chain should be separated into meaningful starting states that can be edited together.
 
@@ -159,7 +171,7 @@ Downgrade or split when an action requires:
 
 Keep cuts purposeful. Too many closeups of unimportant mechanics can make an ad feel like an instruction manual.
 
-## 8. Product-state ledger
+## 9. Product-state ledger
 
 For sequences involving changing physical states, track at minimum:
 
@@ -178,7 +190,25 @@ Example:
 
 State labels are shorthand; source references and approved keyframes define actual geometry. Never assume state transitions are mechanically possible merely because they sound plausible. For unseen/unsupported states, request evidence or choose a simpler depiction.
 
-## 9. Edit-ready starting-frame doctrine
+## 10. Supporting props: explicit identity and continuity
+
+Product components belong to product-state authority; supporting objects belong to the **prop plan**. A lid or included scoop confirmed in a product-state reference does not require a separate invented prop. A protein shaker, ordinary glass, charging cable, sponge, plate or other external use object may be missing.
+
+The Strategist must distinguish:
+- `IDENTITY_CRITICAL`: exact external prop appearance matters, so it needs a reference or a redesign.
+- `ACTION_ESSENTIAL_GENERIC_ALLOWED`: essential to a useful product interaction or payoff, but a neutral ordinary unbranded object is acceptable.
+- `OPTIONAL_BACKGROUND`: not necessary; avoid decorative prop invention.
+
+A missing generic-allowed prop is **not a reason to abandon a compelling use sequence**. If the user does not supply its reference, downstream may design one coherent neutral, realistic unbranded prop and use it consistently. Explicit user-provided prop references or instructions override the fallback. Do not invent labels, logos, endorsements, technological capabilities, or elaborate hidden construction.
+
+The Image Analyzer should approve a **Prop Identity Anchor** once for each newly created generic item. Record enough identifying appearance to preserve it: type, silhouette, material, simple color, approximate size relative to the real product, lid/closure state, and whether branding/text must be absent. The actual appearance and geometry are image-stage decisions. Every later keyframe with that object must match it; don't change a shaker from opaque white to clear to black across beats.
+
+Maintain a **prop-state ledger** alongside product state when relevant. Example:
+`EMPTY_GENERIC_SHAKER -> POWDER_IN_SHAKER -> PREPARED_DRINK`. A cut may skip complex motion, but the resulting state must be believable. All handling must respect hands, surface support, gravity and anatomy; do not teleport the prop into impossible positions.
+
+Warnings to the user should be concise and nonblocking, normally once in the Strategist's initial output; do not create a questionnaire for every spoon or glass. Ask for a picture only when specific identity or mechanics materially matter.
+
+## 11. Edit-ready starting-frame doctrine
 
 A starting image is **the first usable state of the intended motion**, not merely a pretty still or the final state after the action has ended.
 
@@ -199,7 +229,7 @@ Avoid:
 
 Let the Image Analyzer determine exact hands, pose, crop, scale, state geometry and prompt. This skill supplies the **temporal goal**.
 
-## 10. Shot variety that feels filmed, not generated
+## 12. Shot variety that feels filmed, not generated
 
 Useful shot variations within one recording session:
 
@@ -214,7 +244,7 @@ Variation should be motivated by **new information**, not arbitrary visual novel
 
 Do not force radically different perspectives or a complete camera revolution to simulate professional filmmaking. Smartphone-style UGC often looks best with believable short-distance changes and imperfect but coherent framing.
 
-## 11. Session environment continuity: hard cross-beat rule
+## 13. Session environment continuity: hard cross-beat rule
 
 When the ad is one supposed recording session, all beats must plausibly occur in **one real physical place**.
 
@@ -235,7 +265,7 @@ A wider, higher, lower, or closer angle is allowed only when it feels like a phy
 
 The Image Analyzer must author the concrete **Session Environment Anchor** and validate every new beat image against it. This skill requires continuity but does not itself decide exact cabinet geometry or camera coordinates.
 
-## 12. Creator and product continuity
+## 14. Creator and product continuity
 
 If the ad depicts one session, keep consistent:
 
@@ -249,7 +279,7 @@ Creator visibility may vary: full/upper body, face, hands-only, product-only, or
 
 Product identity and scale are enforced by the Image Fidelity and Image Analyzer authority system, not by long repetitive description here.
 
-## 13. Credible human and product motion
+## 15. Credible human and product motion
 
 Prefer:
 - small meaningful hand movement
@@ -268,7 +298,7 @@ Avoid:
 
 If an action is animation-risky, simplify it or select a nearby starting state; do not compensate by adding more adjectives or contradictory negative rules.
 
-## 14. No-talking default and VO integration
+## 16. No-talking default and VO integration
 
 Assume the creator is **not delivering the voiceover on camera**. The image/video prompts should not accidentally require speech, lip-sync or mouth-synchronized performance unless the user selected dialogue mode.
 
@@ -278,7 +308,7 @@ Do not pad VO with descriptions of obvious actions (“Now I open the jar”). D
 
 Native speech/dialogue is supported as a **clearly optional** variant. Do not redesign the default workflow around native voice consistency or lip-sync.
 
-## 15. B-roll and supporting inserts
+## 17. B-roll and supporting inserts
 
 B-roll is useful only if it adds something. Good reasons:
 
@@ -293,7 +323,7 @@ Do not insert redundant tapping, rotating, zooming, slow product holds, or gener
 
 If a high-value B-roll insert needs a special source reference (interior, applicator, underside, label), mark that dependency before generation. If unavailable, find another visual rather than inventing geometry.
 
-## 16. Payoff design
+## 18. Payoff design
 
 Every narrative should resolve its visual promise when appropriate. The payoff must fit the product and the commercial thesis.
 
@@ -306,7 +336,7 @@ Examples:
 
 A payoff is not always a dramatic before/after. It may simply be useful completion, design desirability, convenience, or experience. The Strategist owns whether the payoff supports the sales argument; production systems own how it looks and moves.
 
-## 17. Cut and edit design
+## 19. Cut and edit design
 
 Each beat should have a visual entrance and exit that can survive a hard cut. Useful cut points include:
 
@@ -320,7 +350,7 @@ Do not promise a particular effect or frame-exact cut before clips exist. The Vi
 
 Use sound and captions only where helpful. A clean VO, purposeful cuts and readable product visuals generally matter more than busy motion graphics. Do not require external tools beyond the planned voice service and CapCut for core beginner workflow.
 
-## 18. Prompt economy and engine-neutrality
+## 20. Prompt economy and engine-neutrality
 
 When passing video guidance, favor concise executable information:
 
@@ -334,9 +364,11 @@ Do not prescribe Kling 3.0 vs 4.0, Omni vs Keyframes, text vs structured section
 
 Avoid long lists of micro-directives, contradictory instructions, or trying to force the model to solve hard transitions by describing them more elaborately.
 
-## 19. Outputs and handoffs by stage
+## 21. Outputs and handoffs by stage
 
 ### When called by the Strategist
+
+Include a supporting-prop audit and visually distinct concept routes without forcing unavailable branded items.
 
 Suggest or validate:
 - `product_interaction_profile`
@@ -350,6 +382,8 @@ The Strategist's JSON schema remains authoritative. No separate mandatory docume
 
 ### When called by the Image Analyzer
 
+Establish an identity anchor for any approved generic unbranded supporting prop and carry its state consistently across keyframes.
+
 For each beat ensure:
 - unambiguous visual function
 - approved product/state references are available
@@ -362,6 +396,8 @@ The Image Analyzer owns all concrete image-generation output.
 
 ### When called by the Video Analyzer
 
+Preserve supporting-prop visual identity and state through generated footage; do not add new branded props.
+
 For each beat or proposed group of beats ensure:
 - one primary action and motion complexity rating
 - expected safe states and physical dependencies
@@ -372,7 +408,7 @@ For each beat or proposed group of beats ensure:
 
 The Video Analyzer chooses the model, duration, prompting format and engine-specific settings experimentally.
 
-## 20. Example: powder product without a fixed template
+## 22. Example: powder product without a fixed template
 
 A sensible six-beat concept **could** be:
 
@@ -385,13 +421,13 @@ A sensible six-beat concept **could** be:
 
 But if the commercial thesis is design/value rather than preparation convenience, the sequence should change. The commercial reason to buy is not “watch me scoop.” A different category should not inherit this sequence.
 
-## 21. Lean QA before generation and after review
+## 23. Lean QA before generation and after review
 
 Ask only what changes the current production decision:
 
 **Commercial:** Does this beat add buyer-relevant information or make the approved ad more persuasive?
 
-**Visual:** Is it distinct without feeling like a new room/session? Does it show what matters?
+**Visual:** Is it distinct without feeling like a new room/session? Does it show what matters? Are alternative concepts visually and structurally different? Are generic supporting props consistent across beats?
 
 **Physical:** Can the action and state really work? Are enough references provided?
 
@@ -405,7 +441,7 @@ Ask only what changes the current production decision:
 
 Reject or simplify beats that fail in several categories. Do not rewrite every prompt because one stochastic artifact occurs.
 
-## 22. Failure classification and iteration
+## 24. Failure classification and iteration
 
 When testing a full ad, identify the root cause before adjusting the workflow:
 
@@ -419,7 +455,7 @@ When testing a full ad, identify the root cause before adjusting the workflow:
 
 Fix the smallest responsible layer first. Preserve proven rules. Across full tests, revise linked master prompts and skills coherently before tagging stable versions. Keep generated footage and test observations as evidence; do not lock the engine choice on one good result.
 
-## 23. Portability and final doctrine
+## 25. Portability and final doctrine
 
 This is a portable Markdown skill. It does not require GitHub access, plugins, native audio, a paid model, an image generator API, or any single video engine. The main workflow may retrieve it via a public raw skill URL when available, otherwise use a lean embedded fallback.
 

@@ -5,10 +5,10 @@ license: Proprietary
 compatibility: Portable plain-Markdown Agent Skill. Network access is optional; do not require GitHub, paid tools, or live research to proceed.
 metadata:
   author: MarketerVibe
-  version: "1.3.0"
+  version: "1.4.0"
 ---
 
-# MarketerVibe UGC Ad Strategy Skill V1.3
+# MarketerVibe UGC Ad Strategy Skill V1.4
 
 ## 1. Purpose and architecture
 
@@ -192,6 +192,17 @@ Each major beat should answer at least one of these: create attention, establish
 
 ## 11. Angles and concept selection
 
+### Creative-divergence requirement
+
+When the master prompt asks for A, B and C, the three options are **three alternative advertisements**, not cosmetic rewrites. Each must have a different central buyer/persuasion angle **and a recognizably different visual story**. Vary several of: hook mechanism, first meaningful shot, visual progression/order, emphasis on creator versus product versus real use, B-roll role, narrative construction, payoff, and editing rhythm. They should feel different even with the VO muted.
+
+Before presenting the options, run a silent-video test: **if the first three beats of A/B/C could be exchanged without changing the story, redesign them.** Do not make every option `creator holds product -> lid/dropper -> use -> creator holds product`. Keep a dominant argument for each, and choose genuine variety rather than just renaming `simple routine` into three synonyms.
+
+For a powder product, structurally distinct routes might be (only if supported): a relatable routine-friction story that ends with a prepared shake; an immediate sensory/texture-led montage that emphasizes the preparation experience; or a label/feature-driven buyer-decision story with a lifestyle payoff. For serum, differences might be problem-to-payoff, tactile design and ritual, or an in-the-middle-of-a-routine discovery. **These are examples, not prescribed category templates.** No invented proof, unsupported ingredients, impossible transformations, or unnecessary props are needed merely to force variation.
+
+An energetic visually distinctive concept with manageable production risk can outrank a technically easy but static montage. Do not automatically choose A or the safest creator-holding sequence. Judge the options by commercial strength, story variety, payoff, feasibility and credit cost; explain the recommendation.
+
+
 Generate several truly distinct strategic options internally. Typical families: problem/frustration, desired outcome, curiosity, discovery, demonstration, objection, comparison, routine, mechanism, convenience, sensory experience, aesthetic/design, lifestyle/identity, value, education, credible proof.
 
 Score for:
@@ -206,7 +217,7 @@ Score for:
 
 Visual convenience alone must not defeat the stronger sales idea, but avoid concepts dependent on impossible anatomy, fabricated proof, many unsupported product states, elaborate transformations, or unnecessary actors.
 
-When the master prompt calls for three directions, present exactly three genuinely different options, a recommendation and `A / B / C / AUTO`. Do not finalize the downstream handoff until a direction is chosen, unless the user explicitly delegates selection.
+When the master prompt calls for three directions, present exactly three genuinely different options with visible differences in visual story, a recommendation and `A / B / C / AUTO`. Do not finalize the downstream handoff until a direction is chosen, unless the user explicitly delegates selection.
 
 ## 12. Hook system
 
@@ -220,7 +231,21 @@ A useful hook promises a commercial payoff, not just a random movement. A produc
 
 Avoid empty formulaic hooks (“Hey guys,” “Stop scrolling,” “Game changer”) unless unusually well justified. The rest of the ad should pay off the curiosity and reconnect to the CTA.
 
-## 13. Product Interaction Profile (new shared strategy output)
+## 13. Essential supporting props and asset-dependency audit
+
+Do a short **SUPPORTING_PROP_AUDIT** before finalizing creative options. Product parts (cap, applicator, built-in scoop) are product-state components when evidenced; a separate shaker, glass, charging cable, cleaning cloth or styling accessory is a supporting prop. Inspect the supplied images; never claim a prop was provided if it is not visible/supplied.
+
+Classify each candidate prop:
+
+- `IDENTITY_CRITICAL`: exact brand, unusual geometry, proprietary mechanism or user-requested identity matters. Ask for an image **only when the selected idea truly depends on its identity**, or offer an alternative shot.
+- `ACTION_ESSENTIAL_GENERIC_ALLOWED`: physical object is needed to show a desirable use/payoff, but a normal neutral unbranded version is adequate (e.g. protein shaker, ordinary glass, basic bowl). Mark the missing reference and proceed using a planned `GENERIC_UNBRANDED` prop unless user asks to upload a reference or avoid the action.
+- `OPTIONAL_BACKGROUND`: not necessary. Don't force into the story, and do not invent random decor.
+
+**Do not quietly downgrade a compelling concept to repetitive product-holding shots just because a common supporting prop is missing.** Describe the useful idea, give one short nonblocking warning and a no-reference fallback. In the initial options, mention a missing prop once in production context, and note any option-specific dependency. If user selects A/B/C/AUTO without providing it, the default for generic-allowed props is **use one consistent unbranded generic object**. No additional question or confirmation is needed. If the user specifies the actual prop or provides a picture, that reference outranks the generic default. If the user forbids invented props, skip or redesign the dependent beats.
+
+Pass downstream a `supporting_props` plan containing each required prop's `role`, `classification`, `reference_status`, `handling_policy`, `identity_brief` and `used_in_beats`. The Image Analyzer is responsible for establishing the generic prop's actual visual design once and preserving it throughout all images; the Video Analyzer preserves its geometry and state during motion. Do not invent logos, labels, branded accessories or exact specifications. Include a prop's state changes (`EMPTY -> POWDER_ADDED -> PREPARED_SHAKE`) as meaningful dependencies, not guaranteed on-camera physical transformations.
+
+## 14. Product Interaction Profile (new shared strategy output)
 
 Create a compact profile based on the actual product, not a fixed niche template. Suggested fields:
 
@@ -241,11 +266,12 @@ product_interaction_profile:
   physics_or_geometry_risks: ["..."]
   transitions_to_cut_over: ["..."]
   reference_gaps: ["..."]
+  supporting_prop_dependencies: ["..."]
 ```
 
 The profile is an **inventory**, not a requirement to film every possible interaction. Choose actions that reinforce the commercial argument. Use the shared `ugc-visual-production` skill for beat/shot/rhythm principles when available; otherwise apply the short principles in this skill and continue.
 
-## 14. Visual beat map (new strategic plan)
+## 15. Visual beat map (new strategic plan)
 
 Default to 4–8 visual beats, usually 5–6 for a 20–30 second ad, but allow fewer, more, shorter or longer when clearly better. Do not divide duration evenly or introduce filler to reach a count.
 
@@ -260,12 +286,12 @@ For each chosen beat, pass concise **strategic** fields (the calling master prom
 - `creator_visibility` and broad `shot_family` / framing direction
 - `voiceover_message_role` (not necessarily a single spoken line)
 - `starting_state_intent`, `motion_opportunity`, `cut_logic`
-- `reference_needs`, `hard_requirements`, `flexible_suggestions`
+- `reference_needs`, `supporting_prop_dependencies`, `hard_requirements`, `flexible_suggestions`
 - `complexity_or_continuity_risk`, `avoid`
 
 Use **one simple primary movement per shot** when possible. Treat complex transitions (open → scoop → pour → shake) as candidate edit cuts rather than forcing one model to perform everything. The Strategist identifies the logical cut opportunities, not exact editing timestamps.
 
-## 15. Visual continuity and product-state progression
+## 16. Visual continuity and product-state progression
 
 A one-session story should preserve the same creator, wardrobe, product identity, room family, lighting family and physically logical state progression. Do not propose unexplained time/room changes as a solution to shot variety.
 
@@ -273,7 +299,7 @@ Strategist states the **session continuity intention** and any scene changes tha
 
 A visual beat can show a product already opened when the edit communicates an intentional cut. Do not plan transitions that require an object to morph or duplicate. If a state requires missing references, flag them and simplify when practical.
 
-## 16. VO-first commercial story
+## 17. VO-first commercial story
 
 Design **one connected spoken argument** spanning the full advertisement. The VO sells the reason to care; visuals show meaningful product behavior. Do not write six disconnected mini-scripts merely because the visual map contains six beats.
 
@@ -291,7 +317,7 @@ Voice tone: natural creator language, contractions, short understandable ideas, 
 
 In STRATEGY MODE, pass a narrative direction, hook example if useful, VO purpose per beat, and CTA direction. Do not normally finalize the whole spoken script until image/video constraints are clearer.
 
-## 17. Story structures and CTA loop
+## 18. Story structures and CTA loop
 
 Choose the structure that fits the argument, not a universal framework:
 
@@ -304,7 +330,7 @@ Choose the structure that fits the argument, not a universal framework:
 
 A CTA should relate back to the original motivation, even when soft and conversational. Do not fabricate an offer to make the ending stronger.
 
-## 18. Natural copy, creator opinion and experience
+## 19. Natural copy, creator opinion and experience
 
 Every line should pass: **“Would a real creator plausibly say this?”** Prefer conversational confidence, natural rhythm and customer vocabulary; avoid robotic feature lists and landing-page phrasing.
 
@@ -312,17 +338,17 @@ A present-tense subjective impression of something visible is not automatically 
 
 Every line should earn attention, relevance, desire, support, objection removal, or action. Do not narrate visually obvious steps (“Now I'm opening the bottle”) unless the instruction itself is useful to the buyer.
 
-## 19. STRATEGY MODE output requirements
+## 20. STRATEGY MODE output requirements
 
 The calling master prompt may choose its response format. The useful two-step pattern is:
 
-**First response**: concise reference map, product/audience snapshot, salient category/research signals, exactly three differentiated creative directions, recommendation and `A/B/C/AUTO` choice. Each direction previews hook, purchase driver, visual beat shape, VO narrative direction, important assets, and one clear limitation.
+**First response**: concise reference map, product/audience snapshot, salient category/research signals, one nonblocking missing-props note if relevant, exactly three commercially AND visually differentiated creative directions, recommendation and `A/B/C/AUTO` choice. Give each direction a distinctive visual-story structure, not the same beats in different wording. Each direction previews hook, purchase driver, visual beat shape, VO narrative direction, important assets, and one clear limitation.
 
 **After selection**: one compact machine-readable handoff for the Image Analyzer, with at least:
 
 - `project`, `product_reality`, verified/user-provided/concept facts, evidence limitations
 - `audience`, `persuasion` (buyer motivation, purchase driver, commercial thesis, reason to believe, CTA loop)
-- `production_context` and references by **role**, not file upload number
+- `production_context`, `supporting_props` asset policy and references by **role**, not file upload number
 - selected `creative_direction` and hook
 - `product_interaction_profile`
 - `visual_beat_map` with stable IDs, states, simple actions, image starting-state intent, VO roles, and complexity markers
@@ -331,7 +357,7 @@ The calling master prompt may choose its response format. The useful two-step pa
 
 Pass only what is useful downstream; avoid duplicated fields that can contradict one another. The Image Analyzer is free to solve exact poses, angles and motion-ready states while preserving the commercial necessities.
 
-## 20. EXECUTION MODE after visuals are approved
+## 21. EXECUTION MODE after visuals are approved
 
 Use the existing approved strategy and final visual/beat order. Do not recreate research or the concept from zero merely because some footage changed.
 
@@ -346,7 +372,7 @@ Use the existing approved strategy and final visual/beat order. Do not recreate 
 
 If the approved strategy lacks buyer motivation, try to strengthen it using allowed positioning, category insight, subjective framing, or a better CTA. Only escalate an upstream gap if a compelling commercial argument genuinely cannot be made without essential missing facts.
 
-## 21. Boundaries with Visual Production, Image and Video
+## 22. Boundaries with Visual Production, Image and Video
 
 - **Strategist + this skill**: buyer, reason to care, product interaction possibilities, commercial visual beats, high-level pacing and VO narrative.
 - **Visual Production skill**: reusable shot families, beat density, simple motion doctrine, cut-over-complexity, edit readiness, cross-beat rhythm.
@@ -357,7 +383,7 @@ If the approved strategy lacks buyer motivation, try to strengthen it using allo
 
 Do not choose Kling 3.0 vs 4.0, Keyframes vs Omni, or JSON text prompting here. Test these later. A failure of video physics does not automatically invalidate a good sales concept.
 
-## 22. Testing and quality checks
+## 23. Testing and quality checks
 
 Before approving a strategy, ask internally:
 
@@ -373,7 +399,7 @@ Before approving a strategy, ask internally:
 
 The first production versions are **experimental**. Log what failed, trace the failure to the responsible layer, and revise the system before locking final versions and engine choices. Do not add five pages of defensive micro-rules to the Strategist because of one random generation artifact.
 
-## 23. Portability and fallback
+## 24. Portability and fallback
 
 This skill is plain Markdown and works without web access, GitHub, plugins, or a specific AI/video platform. If a master prompt can load this skill remotely, use it; otherwise use its embedded fallback commercial core. Never claim a remote skill was retrieved unless it actually was. Skill availability must not prevent a basic useful strategy.
 
