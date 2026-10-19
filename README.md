@@ -5,8 +5,14 @@ Portable plain-Markdown specialist skills for the MarketerVibe UGC workflow.
 ## Skills
 
 - `skills/ugc-ad-strategy/SKILL.md` — **V1.4.0**: product/audience diagnosis, optional research, awareness, angles, hooks, natural UGC copy, claim grounding, and the compact creative-strategy handoff.
-- `skills/ugc-visual-production/SKILL.md` — **V1.1.0**: fast-cut UGC visual production: purposeful short visual beats, simple believable actions, product-use progressions, controlled shot variety, B-roll, payoffs, edit-ready keyframes, and VO-friendly pacing.
+- `skills/ugc-visual-production/SKILL.md` — **V1.2.0**: fast-cut UGC visual production: purposeful short visual beats, simple believable actions, product-use progressions, controlled shot variety, B-roll, payoffs, edit-ready keyframes, and VO-friendly pacing.
 - `skills/image-fidelity/SKILL.md` — **V1.1.0**: photorealism, product invariants, physical scale, material-light integration, human/contact realism, camera realism, environment integration, and a lean QA gate.
+
+## Visual Production V1.2 highlights
+
+- Separate silent-video workflow: each approved image starts an independently generated silent clip, with continuous external VO added during the edit.
+- Kling model testing compares actual outcomes without prematurely locking a model or version.
+- Continuity and color QA separates source-image mismatch, within-clip drift, and edit mismatch; credit-efficient retakes and test logs are based on credits per usable second.
 
 ## Image Fidelity V1.1 highlights
 

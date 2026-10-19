@@ -1,462 +1,313 @@
 ---
 name: ugc-visual-production
-description: Universal fast-cut AI UGC visual-production methodology for strategy, image planning and video generation. Use to design purposeful short visual beats, simple believable actions, product-use progressions, controlled shot variety, cut-over-complexity, B-roll, payoffs, edit-ready keyframes and VO-friendly pacing. Does not select ads or lock a video model.
+description: Universal visual-production methodology for fast-cut AI UGC ads across Strategist, Image Analyzer, Video Analyzer, and final edit. Use for product-adaptive beats, B-roll, purposeful shot variation, motion-ready first frames, separate short-clip production, product and creator continuity, physics-safe actions, cross-clip QA, VO-first pacing, and controlled video-engine testing. Does not lock a model or dictate a specific video-prompt format.
 license: Proprietary
-compatibility: Portable plain-Markdown Agent Skill. Works without GitHub, plugins, external tools, paid services, or access to a specific image/video engine.
+compatibility: Portable plain-Markdown Agent Skill. No GitHub access, plugin, API, video model, or editing software is needed to read or apply its principles.
 metadata:
   author: MarketerVibe
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 
-# MarketerVibe UGC Visual Production Skill V1.1
+# MarketerVibe UGC Visual Production Skill V1.2.0 DEV
 
-## 1. Purpose
+## 1. Role and operating philosophy
 
-Design believable short-form AI UGC as **a sequence of meaningful, editable visual moments**, not a few long synthetic talking-head performances.
+This is **one reusable production skill**, not a standalone master prompt, video engine preset, or advertising strategist. Make fast-cut short-form AI UGC **believable, product-accurate, commercially purposeful, and practical to produce**. Favor purposeful independent short clips and editing over a single synthetic creator performing an entire ad.
 
-The default ad is:
-- **commercially led**, with the chosen buyer argument supplied by the Strategist
-- **visual-first and fast-cut**, without frantic or unrealistic acting
-- **external-VO-first**, with spoken persuasion spanning visual cuts
-- **physical and product-centered**, with believable handling and useful visual payoff
-- **simple to generate, edit and retake**, suitable for beginner course users
-- **universal**, adapting to product interactions rather than requiring a separate workflow per niche
+Default workflow: selected advertising concept -> product-aware visual beats -> one approved motion-ready starting image per planned independent clip -> individually generated **silent** video clips -> one continuous externally generated voiceover -> final assembly in CapCut. Audio does not need to synchronize with lip movement or equal clip boundaries. Natural on-camera dialogue remains an explicit optional variant, never the default.
 
-This skill is a specialist methodology, not a standalone generator or master prompt. It must not override approved positioning, product canon, creator identity, image reference authority, or the user's creative goal.
+Use the simplest credible execution. Don't reward a still-life montage, redundant product holding, complex motion, or artificial activity merely because it looks impressive. Keep a clear buyer reason, commercial payoff, varied useful visual coverage, and realistic human/product physics.
 
-## 2. Activation and ownership across stages
+Do not modify approved commercial positioning, product canon, scene identity, image-source authority, or the user's chosen creative experiment. Give the Video Analyzer technical flexibility without silently redesigning the ad.
 
-Use the same skill with different emphasis depending on the caller:
+## 2. Stage activation and responsibility boundaries
 
-| Stage | Use this skill for | Leave to calling system |
+| Caller | Apply this skill for | The caller retains authority over |
 | --- | --- | --- |
-| **Strategist (before images)** | interaction inventory, strategic beat families, purposeful shot variety, high-level cut opportunities and pacing, candidate payoff | buyer/angle/research/claims, exact pose, video engine |
-| **Image Analyzer** | edit-ready starting states, one-action readiness, coherent multi-angle visual coverage, environment continuity, B-roll framing | image prompting, identity/product/scale authority, exact room geometry |
-| **Video Analyzer** | per-beat motion simplicity, clip/beat grouping, segmentation, practical cut logic, usable duration, dead-time reduction | Kling/model selection, engine prompts, frame timing, actual footage QA |
-| **Assembly guidance** | visual rhythm, useful trim points, VO/image complementarity, optional inserts | actual CapCut editing and export |
+| Strategist | Product interaction inventory, distinct visual concepts, beat families, meaningful B-roll, payoff, prop dependencies, broad pacing/cut opportunities | Buyer, offer, angle, research, copy boundaries, final strategy handoff |
+| Image Analyzer | Motion-ready first states, one-shot-per-clip planning, purposeful framing, environment/creator/prop continuity, cross-image consistency | Exact reference selection, prompt writing, image QA, measurements and visual identity via Image Fidelity |
+| Video Analyzer | Motion feasibility, per-clip instructions, scene/color fidelity, physical risk, shot duration and trimability, engine trials, clip QA and revision decisions | Engine selection, precise settings, engine-specific prompt syntax, generated clip review and handoff |
+| VO / assembly stage | Continuous VO fit, purposeful cuts, trim guidance, optional ambient sound, selective color normalization | Final VO script/delivery, audio creation, CapCut timeline and final export |
 
-Do not ask the user to load all specialist skills manually. The calling module should load/apply this one when relevant and pass useful decisions downstream.
+No skill should restart the Strategist's approved A/B/C choice. Apply this skill at the stage's level of abstraction; do not repeat another specialist's complete job. No extra user-facing skill-loading step is required.
 
-Do not perform market research, invent positioning, author the final VO script, generate images/video, or prescribe platform-specific prompt syntax. Another module owns each task.
+## 3. Explicit first development contract: one image, one independently generated clip
 
-## 3. Fundamental model: beat != keyframe != clip
+For **REBUILD_V1 development tests**, the production contract is:
 
-- **Visual beat:** one coherent moment with a clear information or commercial job.
-- **Starting keyframe:** a visual state designed to begin a simple motion realistically.
-- **Generated video clip:** any footage unit from an image/video model. It may contain one or multiple beats.
-- **Final edit:** selected and trimmed sections of generated footage synchronized with one continuous audio story.
+- One strategic beat planned as a clip -> **one approved image** as frame one -> **one separately generated video clip**. If the Strategist and Image Analyzer specify N clips, require N mapped starting images.
+- Map beat/image/clip IDs one-to-one (`BEAT_01` / `UGC_IMAGE_01` / `CLIP_01` for new workflows). Older handoffs may be zero-based; preserve their exact legacy IDs when interpreting existing completed tests. Never renumber a live handoff silently.
+- Approve the complete clip/sequence plan before requesting generation; generate and inspect one clip at a time, so a failed clip is individually replaceable.
+- Clip lengths and final edited shot lengths are **not equal**. CapCut may trim generated footage aggressively, hard-cut between clips, and omit nonessential footage.
+- Do not quietly group all approved images into one 20–30-second generation. Multi-keyframe or multi-shot workflows are **controlled optional comparison tests only**, after the independent-clip baseline is measured and with the user's explicit approval.
+- A cross-cut between different images does not require continuous physical animation or an AI transition.
 
-Do not force one keyframe per beat, one clip per beat, or one generation request per clip. Those are production decisions based on tested engine capabilities.
+Conceptually, a visual beat, image, generated clip, and edited segment are distinct entities. The present development workflow intentionally maps the first three one-to-one; future versions may change this **after testing**, not by assumption.
 
-A beat may last a fraction of a second or several seconds in the actual edit. Never manufacture dead time just to match a nominal clip duration.
+## 4. Product-adaptive interactions
 
-## 4. Universal, product-adaptive interaction logic
+Analyze the product, not a fixed serum template:
 
-Every product has its own meaningful physical interaction vocabulary. Analyze the product rather than applying a serum template to a garment or gadget.
+- primary use and realistic setting; relevant buyer moment
+- closed/open/disassembled/prepared/worn/used/consumed/finished states
+- natural hands, object supports, dimensions, weight, transparency, liquid/powder containment
+- actual supplied components and external supporting props
+- useful details, preparation, use demonstration, follow-through, experience and payoff
+- risks from unseen geometry, mechanical transitions, fluid transfer, identity-sensitive logos and precise contacts
+- creator face/body/hands/product-only presence as commercially useful, not as a mandatory quota
 
-Inspect:
-- natural real-world use context and environment
-- primary and secondary interaction(s)
-- visual states: closed, opened, detached, prepared, worn, applied, consumed, connected, cleaned, etc.
-- which transitions must occur sequentially
-- tactile and detail opportunities
-- valid use demonstrations and visible (or implied) result
-- hand occupancy, support surfaces, gravity, size, tool/body contact
-- supported product-state and measurement references
-- interaction physics and animation risks
-- whether face, hands, body, or product-only coverage is commercially useful
+Examples: serum (closed bottle, detached dropper, application, natural finish); protein (tub/label, opening, original scoop, shaker *if supplied or allowed generic*, prepared shake); clothing (material, wearing, fit and movement); electronics (buttons, charging or use state supported by actual evidence). The concept determines which actions deserve airtime.
 
-Examples (not mandatory sequences):
+## 5. Three options must look like three different ads
 
-| Archetype | Useful physical moments | Credible payoff |
-| --- | --- | --- |
-| Serum / skincare | bottle detail, opening, dropper-ready, dispensing, application | realistic finished routine, satisfied post-use moment |
-| Powder / supplement | jar, lid, scoop, pouring, mixing | finished shake or convenient preparation |
-| Food / beverage | packaging, opening, serving, pour, bite/sip | ready-to-use result or grounded tasting moment |
-| Headphones / small electronics | reveal, controls, fit/wearing, practical use | in-context use, convenience, design appeal |
-| Apparel / accessories | material detail, holding, wearing, movement, fit | coherent outfit/fit, comfort or styling impression |
-| Cleaning / household | product prep, targeted application, wiping, use | visibly credible cleaned area or completed task |
-| Other products | discover primary physical use first | product-appropriate outcome, not invented transformation |
+When the Strategist offers A/B/C, enforce different commercial mechanisms **and visible journeys**: opening, visual hierarchy, face-to-B-roll ratio, interaction order, payoff, rhythm or use context. If the options look like the same six shots on mute, revise them before selection. Do not manufacture novelty with unrelated props, dramatic camera movements, or impossible product uses.
 
-Not every shot needs a product interaction. A useful emotional or context shot can support the buyer story. But avoid unsupported product appearances, impossible use states, and superficial mechanics-as-sales-pitch.
+Once an option has been approved, downstream modules must **not** substitute another sequence merely because a different one seems easier. An intentional creative experiment, such as a tub sliding in from outside the frame, is preserved for testing, with explicit risk notes and fallback options only after observing a result.
 
-## 5. Make alternative directions look like different advertisements
+## 6. Every visual beat earns its place
 
-The Strategist may request three alternative concepts for the same product. Apply **visual story divergence**, not just different headlines:
+Typical functions, selected adaptively: `HOOK`, `REVEAL`, `TACTILE_DETAIL`, `USE_PREP`, `USE_EXECUTION`, `FOLLOW_THROUGH`, `PAYOFF`, `CTA_HERO`. A beat contributes useful information, emotion, sensory appeal, commercial evidence, or buyer motivation; it does not exist just to reach a count.
 
-- Different visual opening mechanisms (creator situation, action already underway, product detail, relevant problem, feature comparison).
-- Different **shot journey** and which stage of use appears early or late.
-- Different emphasis on face/creator, hands/action, tactile macro and lifestyle context.
-- Different type of payoff and VO-supporting B-roll, chosen to fit the persuasion angle.
-- Different pacing character when appropriate (e.g. quick demonstrative cuts vs sensory close-ups), without forcing complexity or unnecessary clip counts.
+For each beat know:
+1. Why it exists and what the viewer learns.
+2. The single main visible action, or deliberate stable inspection.
+3. The actual starting state and intended end state.
+4. The cut opportunity and relation to neighboring footage.
+5. What motion, text and identity must remain faithful.
 
-Do not rely on generic `show product -> open product -> apply/use -> show product` for every concept. If A/B/C share the same first three beats, same center and same payoff, they are too similar. Redesign the sequence while retaining true product usage. Distinctiveness must arise from useful story choices; do not insert random angles, ungrounded props or impossible actions for novelty.
+Common planning range: 4–8 beats (often 5–6 for a 20–30-second ad), **not a quota**. Reject idle or repetitive beats where they don't serve a deliberate bookend or meaningful comparison. Label-heavy B-roll may be almost static for legibility, but its edit duration must still earn its place.
 
-## 6. Every beat has one primary job
+## 7. Cut over complexity; complete simple actions when possible
 
-Common functional beat families:
+Prefer one physically clear action per independently generated clip: controlled lift, slide, point, pour, tap, pat, gaze shift or near-static view. A small follow-through is allowed. Minimize stacked instructions involving gaze, hands, product, camera and facial expression at once.
 
-- `HOOK / INTERRUPT`: attract attention quickly and meaningfully
-- `REVEAL`: orient viewer to product or context
-- `TACTILE DETAIL`: show texture, construction, interaction, physical reality
-- `USE PREP`: place product in state required for use
-- `USE EXECUTION`: show a simple key product action
-- `FOLLOW_THROUGH`: continue/complete a previously established action
-- `PAYOFF`: credible outcome, product result, or satisfying completion
-- `CTA / HERO`: memorable product/creator closing moment
+Split difficult chains into separate pre-established states and use a hard cut. Example: closed tub / **cut** / open tub / **cut** / scoop ready / **cut** / finished shake. A hard cut may skip a difficult opening or closing action, but it must not violate the object's physical state or insert an unapproved prop.
 
-The selected beat sequence need not contain every family. Choose functions that support the approved commercial thesis.
+Do not confuse simplification with stripping every action down to "almost about to". When the point of a beat is dispensing, lifting or pouring, the video should attempt that **one meaningful action** before downgrading to a mere readiness gesture.
 
-Each beat should answer:
+**Motion-simplification ladder:**
+- L1: One realistic completed action.
+- L2: Same action with smaller range/slower pace.
+- L3: Minimal physically complete motion, early usable cut.
+- L4: Readiness/near-static fallback only after genuine technical difficulty.
 
-1. Why does this shot exist?
-2. What **new** information, sensation, emotion, or buying reason does it add?
-3. What single primary visual action could communicate it?
-4. What state must already be true at the beginning?
-5. What can be safely cut to next?
+Retain the chosen shot objective unless the user approves a different creative direction.
 
-If a beat duplicates an earlier shot without adding value, merge or drop it.
+## 8. Product and prop state ledgers
 
-## 7. Beat count, information density and pacing
+Record relevant `state_in`, `one_action`, `state_out`, `physical dependencies`, and `cut_exit`. Original product evidence and actual starting image outrank language assumptions. Keep exact component count, closed/open/attached/detached status, supported orientations, authentic size, graphics and material. A cut never authorizes a magically redesigned package.
 
-Default planning range: **4–8 useful beats**, typically **5–6**, for many 20–30 second short-form ads. This is a starting point, not a quota.
+Classify external supporting props as:
+- `IDENTITY_CRITICAL`: special or branded; preserve supplied source and request reference when necessary.
+- `ACTION_ESSENTIAL_GENERIC_ALLOWED`: ordinary shaker/glass/towel/spoon etc.; user may provide a reference, otherwise Image Analyzer can establish one neutral unbranded design.
+- `OPTIONAL_BACKGROUND`: don't invent for decoration.
 
-Shorter strong ads beat padded long ones. A rapid sequence of 7 beats is not automatically better than 4 meaningful beats. Choose frequency based on product, awareness, amount of explanation, tactile actions, and the intended mood.
+A supplied screw-on lid or scoop is a **product component**, not a randomly regenerated generic prop. Approved recurring generic props get one identity anchor (shape, material, color, size, state) maintained across frames and clips. Keep fluid contents, scoop fill, closures, hand ownership and object support coherent.
 
-Useful pacing patterns include:
-- quick product-first discovery
-- problem/context → demonstration → payoff
-- tactile micro-sequence with short inserts
-- routine-led beginning/middle/end
-- slower premium/considered product demonstration
-- comparison or objection-led sequence
+## 9. Starting-image authority and hidden geometry
 
-**Editing creates energy** through meaningful cuts, shot distance changes, and progression. It should not depend on excessive hand waving, forced facial acting, zoom chaos, or a person speaking continuously to the camera.
+The **actual approved image is the absolute visual authority for frame one**. The Image Analyzer handoff defines intention; if it describes a pose that is absent or already completed in the image, the Video Analyzer must describe the real visual state and revise the motion plan, not force frame one to metamorphose.
 
-## 8. Cut over complexity
+Examples of useful first states:
+- closed tub partly entering from the side, with visible logo and hand already pressing its body
+- detached dropper already near an exposed cheek, ready for one small dispense
+- scoop handle already contacted by the hand, ready to lift
+- label already legible, requiring only very restrained camera/hand movement
+- creator looking toward product, ready for a small look to camera
 
-A single shot should generally contain **one simple physical action**, sometimes one natural follow-through. A high-risk chain should be separated into meaningful starting states that can be edited together.
+**Partial-frame product entrance test:** Preserve the approved entrance image and intended direction. Unseen surfaces remain an identity risk; a first-frame-only model may invent hidden label/body geometry. Where the chosen mode actually supports auxiliary references, compare using the original fully visible product as an explicit secondary identity reference; do not claim such reference support for a keyframes-only entry point. Otherwise note the risk and test the motion before modifying the starting frame. Do not pretend the model sees the full original product unless it was supplied in that specific generation task.
 
-Bad default:
+## 10. Multi-anchor and cross-clip visual continuity
 
-`unscrew lid → find scoop → scoop powder → reach for shaker → pour → replace lid → shake → sip`
+Do not assume Clip 01 establishes every visual identity. Reuse authoritative source/reference mappings from the Image Analyzer:
+- creator facial identity, body/wardrobe, and best approved creator-session appearance
+- manufactured product geometry, labels, state and size
+- component calibrations for dropper, scoop, cap, lid or other recurring parts
+- identity of approved generic props
+- stable physical room, fixed fixtures, countertop/cabinet materials and supported decor
+- overall phone-camera family, exposure, natural color and light direction
 
-Better visual planning:
+An approved image may calibrate a **specific element**, not automatically its crop, posture, facial tilt, hand position or all objects. Repeating an accidental tilt/pose is not a fidelity requirement. Close-up B-roll need not show every room fixture, but any visible fixed elements must belong to the same space. Camera distance can change without moving cabinet handles or replacing countertops.
 
-`Beat A: lid being opened`
+## 11. Cross-clip color continuity: separate the responsible layer
 
-`CUT`
+Treat three different risks separately:
 
-`Beat B: scoop enters powder or is already loaded`
+**Image-source difference:** Approved starting images may already have slightly different white balance/skin tones. Video prompting cannot retroactively correct this without altering frame-one authority. Flag for later Image Analyzer adjustment or light CapCut grading.
 
-`CUT`
+**Within-clip video drift:** Hair, skin undertone, product color, clothing, cabinet/counter color, exposure, contrast or lighting change during the video despite a stable input image. This is a video-model/prompt failure. Preserve source palette, facial identity, ambient light direction and material response.
 
-`Beat C: loaded scoop pours into shaker`
+**Cross-clip editing mismatch:** Two individually acceptable clips cut together at visibly different color/exposure levels. Suggest **minimal, matched grading and shot ordering** in CapCut rather than re-generating everything unless the mismatch is severe.
 
-`CUT`
+Never instruct the video model to warm/cool/beautify an already approved frame just to disguise the mismatch. Test at the actual cut, not just while viewing isolated clips.
 
-`Beat D: shaker already closed, simple shake`
+## 12. Product physics and realistic human performance
 
-Choose cut points around **completed, started, or intentionally skipped transitions**. Each new shot must begin in a physically plausible state. Cuts do not excuse randomly changing the product, room or creator.
+Prioritize gravity, inertia, contact and containment. Closed solid packaging is generally more forgiving; open powder, liquid containers, tiny detached components, near-eye dropper contact, and moving labels are more fragile.
 
-### Complexity signals
+**Creator behavior:** Low-key, natural, sparse blinking, stable expression, limited intentional gaze shifts, normal breathing, no exaggerated acting or scripted mouth movement. For external VO, **do not animate speaking**. Lips should remain at their natural frame-one state except minor incidental motion.
 
-Downgrade or split when an action requires:
-- multiple sequential mechanisms, hand swaps, or tool exchanges
-- fine-object manipulation with hidden geometry
-- object duplication risk, difficult liquid transfer, shifting container state
-- a long complicated trajectory or multi-part transformation
-- facial acting, lip-sync and product manipulation simultaneously
-- an unsupported internal part or physically impossible grip
+**Hands:** realistic grip, thumb opposition, wrists, pressure, skin contact, object weight and one stable support role. No duplicate hands, teleports, product inflation or detached fingers.
 
-Keep cuts purposeful. Too many closeups of unimportant mechanics can make an ad feel like an instruction manual.
+**Objects:** no cap duplication, disappearing lids, deformed scoops, flying powder, expanding bottle, liquid pouring through glass or moving without cause. Transparent pipettes and liquid should obey source state and plausible gravity/surface tension; a drop is small rather than a manufactured stream.
 
-## 9. Product-state ledger
+**Camera:** stable or modest phone-like motion by default; dynamic camera motion is an explicit motivated exception. Do not add zoom/orbits/pans to hide an idle beat. Small genuine product movement can be better than simulated camera drift.
 
-For sequences involving changing physical states, track at minimum:
+## 13. B-roll and pacing designed for editing
 
-- `state_in`: what object(s) and parts exist before the beat
-- `action`: one primary visual change
-- `state_out`: what is true after the beat
-- `next_beat_dependency`: what must be maintained or can be omitted at a cut
+Good B-roll helps interpret the product: category text, tactile reality, fit, texture, size, motion, packaging callouts, credible use and payoff. Bad B-roll shows the same product repeatedly with no new information.
 
-Example:
+Each generated clip needs:
+- recognizable stable opening based on the exact image
+- one specific event or intentional near-static detail
+- enough visually usable material for a trim
+- a useful cut exit, ideally after one clear completion
 
-`CLOSED_BOTTLE → opening → OPEN_BOTTLE_AND_DETACHED_APPLICATOR`
+Don't prescribe equal durations. A 5-second render may yield only 1.5 seconds of useful footage; actual trim length is determined after review. A single continuous VO should bridge clips without requiring one sentence or one breath per image. Let visual action support the buyer message, not narrate obvious mechanics.
 
-`OPEN_BOTTLE_AND_DETACHED_APPLICATOR → positioning → DISPENSING_READY`
+## 14. Engine-neutral video planning and test architecture
 
-`DISPENSING_READY → one drop released → PRODUCT_APPLIED`
+The **Video Analyzer**, not this skill, chooses a model, entry point, prompt format, quality mode or exact clip duration. The skill offers a structured comparison method. For REBUILD_V1:
 
-State labels are shorthand; source references and approved keyframes define actual geometry. Never assume state transitions are mechanically possible merely because they sound plausible. For unseen/unsupported states, request evidence or choose a simpler depiction.
+**Baseline path:** Separate silent image-to-video generations from the approved starting images. Compare single-clip methods before trying to replace the entire independent-clip workflow.
 
-## 10. Supporting props: explicit identity and continuity
+**Candidate categories** (capabilities MUST be rechecked in the current official UI/docs):
+- first-frame-only image-to-video for simple human/object action
+- image-to-video with first frame plus *genuine* additional element/product references for identity-sensitive motion
+- 4.0 Keyframes for a controlled single clip with first/last frames when an approved end state exists, or an explicitly approved multi-keyframe experiment
+- 4.0 Omni for reference-rich action or identity preservation when its controls support the intended task
+- optional lower-cost/Flash modes as quality-vs-credit comparison, not assumed equivalent capabilities
 
-Product components belong to product-state authority; supporting objects belong to the **prop plan**. A lid or included scoop confirmed in a product-state reference does not require a separate invented prop. A protein shaker, ordinary glass, charging cable, sponge, plate or other external use object may be missing.
+Do **not** equate "Omni Reference" with "Keyframes"; they are distinct creation paths with different supported reference types. Do not place unrelated approved ad frames as middle keyframes and expect natural edit-style cuts to be reliable without testing. If a single long multi-keyframe generation fails one transition, the entire output may need regeneration, reducing the advantage of its longer duration.
 
-The Strategist must distinguish:
-- `IDENTITY_CRITICAL`: exact external prop appearance matters, so it needs a reference or a redesign.
-- `ACTION_ESSENTIAL_GENERIC_ALLOWED`: essential to a useful product interaction or payoff, but a neutral ordinary unbranded object is acceptable.
-- `OPTIONAL_BACKGROUND`: not necessary; avoid decorative prop invention.
+**Video model availability and prices may change.** Record exact UI model labels and charged credits rather than building hardcoded version rankings/prices into this skill.
 
-A missing generic-allowed prop is **not a reason to abandon a compelling use sequence**. If the user does not supply its reference, downstream may design one coherent neutral, realistic unbranded prop and use it consistently. Explicit user-provided prop references or instructions override the fallback. Do not invent labels, logos, endorsements, technological capabilities, or elaborate hidden construction.
+## 15. Controlled experiment protocol
 
-The Image Analyzer should approve a **Prop Identity Anchor** once for each newly created generic item. Record enough identifying appearance to preserve it: type, silhouette, material, simple color, approximate size relative to the real product, lid/closure state, and whether branding/text must be absent. The actual appearance and geometry are image-stage decisions. Every later keyframe with that object must match it; don't change a shaker from opaque white to clear to black across beats.
+For a fair comparison, hold constant whenever supported:
+1. Same approved starting image and intended one action.
+2. Same resolution, aspect ratio, duration, audio-off preference and broad camera direction.
+3. Semantically equivalent instructions: subject, action, locks, ending.
+4. Equal reference assets **when the capability being tested isn't reference support**.
+5. Same practical acceptance standard and clips viewed at normal playback speed.
 
-Maintain a **prop-state ledger** alongside product state when relevant. Example:
-`EMPTY_GENERIC_SHAKER -> POWDER_IN_SHAKER -> PREPARED_DRINK`. A cut may skip complex motion, but the resulting state must be believable. All handling must respect hands, surface support, gravity and anatomy; do not teleport the prop into impossible positions.
+Compare one variable at a time where possible. Some models inherently support different reference controls or durations; **record those as meaningful limitations**, not as perfectly controlled comparisons. Start with one high-information exploratory test per candidate, then repeat finalists when randomness makes results unclear. Avoid an expensive full 5–6-clip matrix until the two difficult probe shots identify good candidates.
 
-Warnings to the user should be concise and nonblocking, normally once in the Strategist's initial output; do not create a questionnaire for every spoon or glass. Ask for a picture only when specific identity or mechanics materially matter.
+Recommended probe shots from current development evidence:
+- protein tub sliding partly in from the right edge (hidden geometry, label stability and hand contact)
+- skincare dropper dispensing near cheek (precision, liquid physics, facial integrity)
+- optional label-row close-up (letter/icon stability) and creator CTA (subtle gaze).
 
-## 11. Edit-ready starting-frame doctrine
+Measure **usable final-edit seconds**, not just generated seconds. A cheaper generation that repeatedly fails may cost more per usable second.
 
-A starting image is **the first usable state of the intended motion**, not merely a pretty still or the final state after the action has ended.
+## 16. Kling prompting formats: distinguish API payload from natural-language prompt
 
-Good examples:
-- thumb already positioned on a real button, about to press
-- hand already resting naturally near a supported product lid
-- loaded scoop held just above shaker, ready for a modest pour
-- applicator in a stable position near skin, ready for one simple action
-- garment already worn, ready for a natural turn or fabric movement
-- product already held cleanly for a small CTA motion
+JSON is used as a **transport structure in Kling's API**; this does not prove a user-written arbitrary JSON *text prompt* outperforms prose in the website textbox.
 
-Avoid:
-- hands far from the task with an implied complex reach before anything useful happens
-- an action already finished, leaving a purposeless idle hold
-- a multi-part demonstration requiring the model to invent intermediate geometry
-- product floating or composited with no believable contact
-- impossible simultaneous hand roles
+Test prompt communication after finding plausible engine behavior:
+- concise natural-language motion prompt
+- concise labeled sections (FRAME ONE / ACTION / CAMERA / PRESERVE / END)
+- JSON-style text prompt with **the exact same semantics**, if the selected interface accepts it
 
-Let the Image Analyzer determine exact hands, pose, crop, scale, state geometry and prompt. This skill supplies the **temporal goal**.
+A native API multi-shot array, when supported, is not equivalent to pasting JSON as free text. Prefer the engine's documented fields for actual API use. Avoid bloated prohibitions, conflicting camera directions or over-animating micro-behaviors. Never output API payload as a website-ready prompt unless its UI genuinely accepts that format.
 
-## 12. Shot variety that feels filmed, not generated
+## 17. Minimal video prompt anatomy
 
-Useful shot variations within one recording session:
+Every engine-ready clip prompt should normally specify:
+1. **Frame-one lock:** start from the supplied image without redesigning it.
+2. **One primary action:** one natural motion that still remains to be performed.
+3. **Motion size and physical behavior:** realistic duration/amount, gravity, grip, stable product orientation.
+4. **Appearance continuity:** protect product label, human/face, environment, hair, wardrobe, materials, lighting.
+5. **Camera behavior:** stable smartphone perspective unless intentional movement has a reason.
+6. **Usable exit state:** where the motion ends for a cut.
+7. **Audio:** no generated dialogue/native sound/music if the selected interface supports audio-off. Otherwise remove unwanted soundtrack in assembly, and explicitly flag the limitation.
 
-- medium creator + product → close product detail
-- face-dominant → hands/action-dominant
-- front-facing → small nearby angle
-- wider context → tighter in-context detail
-- eye-level → reasonable counter or object level
-- product hero → use state → payoff
+Engine-specific syntax, image slots, model settings and number of negative directives are the Video Analyzer's responsibility. Compact execution instructions beat a JSON dump of the entire Strategist/Image Analyzer handoff.
 
-Variation should be motivated by **new information**, not arbitrary visual novelty.
+## 18. Video QA and failure classification
 
-Do not force radically different perspectives or a complete camera revolution to simulate professional filmmaking. Smartphone-style UGC often looks best with believable short-distance changes and imperfect but coherent framing.
+Review the generated VIDEO, not only the first frame. Evaluate:
+- starts from approved frame without unexpected changes
+- action happens plausibly and meaningfully, not just idling or inventing extra actions
+- creator facial identity, gaze, micro-expression, fingers and body stay coherent
+- product silhouette, dimensions, labels and parts remain stable
+- liquid/powder behaves plausibly and intended action completes where needed
+- visible room and lighting stay coherent within clip; compare color/exposure across cuts
+- no unwanted speech, subtitles, logos, extra props or soundtrack
+- edit usability: clear moment to keep/trim; meaningful end or cut
 
-## 13. Session environment continuity: hard cross-beat rule
+Use decisions `PASS`, `PASS_WITH_CAUTION`, `REVISE`, `SKIP` or `ENGINE_LIMITATION` with clear evidence. `PASS_WITH_CAUTION` must name the risk and what a final edit can safely hide; it isn't equivalent to unconditional PASS. `SKIP` requires checking that the commercial narrative remains understandable.
 
-When the ad is one supposed recording session, all beats must plausibly occur in **one real physical place**.
+Failure origins:
+- `START_IMAGE_LIMITATION` (starting state doesn't allow intended action)
+- `REFERENCE_OR_IDENTITY` (model invents unseen product/prop or changes person)
+- `MOTION_COMPLEXITY` (too many interactions or movements)
+- `PRODUCT_OR_LIQUID_PHYSICS` (deformation, spilling, impossible contact)
+- `TEXT_AND_LABEL_STABILITY` (warped logos/iconography)
+- `WITHIN_CLIP_COLOR_DRIFT` vs `SOURCE_IMAGE_COLOR_DIFFERENCE` vs `EDIT_MATCHING`
+- `ENGINE_CAPABILITY` (valid setup repeatedly fails on a given model/mode)
+- `PROMPT_AMBIGUITY` (unclear instruction)
+- `BEAT_OR_COMMERCIAL_FAILURE` (boring shot, weak payoff, unnecessary repetition)
+- `AUDIO_ARTIFACT` (unwanted speech/sound in silent workflow)
 
-Preserve identity and layout of:
-- room architecture, wall/cabinet/counter relationships
-- countertop, table, flooring, backsplash material families
-- appliance zone and fixed objects where visible
-- established decor and prop inventory
-- creator's wardrobe, side/orientation relationships when feasible
-- daylight/time-of-day and broad white-balance/light direction
-- overall phone-camera recording character
+Fix the smallest responsible layer. A valid but unsuccessful video generation doesn't automatically justify rewriting the Strategist or source image prompt.
 
-**Changing crop is not permission to redesign the room.**
+## 19. Revision, credit use and retake logic
 
-Do not introduce a random plant, a new window, different cabinets, changed counter material, or unrelated decor merely to fill a closer view. Cropping out a background object is fine; relocating or replacing it is not.
+- Preserve approved source assets, commercial purpose and successful parts of the prompt.
+- If one-action physics fails, reduce range/complexity first; try a different tested model/mode if it is clearly an engine limitation.
+- If the original first frame is already impossible for the intended motion, **escalate to Image Analyzer**, not repeated blind video prompts.
+- If product geometry is missing from a first-frame crop, compare an **actual supported reference-capable engine** instead of asking the model to "remember" an image it never received.
+- If action succeeds but color shifts inside the clip, correct motion/prompt/mode. If source frames mismatch, defer modest matching to CapCut or report image-stage root cause.
+- Regenerate **only the failing clip** when the separate-clip baseline is in use; keep passing clips.
+- Always provide a complete replacement video prompt on REVISE, not a list of detached patches.
+- Track number of generations, revisions, seconds and credits. Avoid declaring a feature solved after one lucky run.
 
-A wider, higher, lower, or closer angle is allowed only when it feels like a physically plausible nearby camera position inside the same room. For ambiguous unseen areas, continue conservatively rather than inventing new architecture.
+## 20. Test log and acceptance metrics
 
-The Image Analyzer must author the concrete **Session Environment Anchor** and validate every new beat image against it. This skill requires continuity but does not itself decide exact cabinet geometry or camera coordinates.
+Each test should record:
 
-## 14. Creator and product continuity
+`test_id`, `product_and_clip_id`, `starting_image_id`, `engine_exact_label`, `entry_mode`, `resolution`, `duration_generated_s`, `native_audio_setting`, `prompt_format`, `reference_assets_and_roles`, `prompt_revision`, `charged_credits`, `usable_seconds`, `frame_one_fidelity`, `product_identity`, `creator_identity`, `physics`, `color_stability`, `commercial_usefulness`, `decision`, `failure_root_cause`.
 
-If the ad depicts one session, keep consistent:
+Optional useful fields: `compared_to_test_id`, `cut_in_out`, `retake_count`, `viewer_noticeability`, `notes`.
 
-- creator face/identity and hairstyle
-- outfit and meaningful accessories
-- product unit/packaging identity
-- scale, label location, material and component count
-- product and prop handling between beats
+Score actual outcomes rather than engine marketing. Prefer a workflow that reliably preserves products, produces usable footage quickly and lets beginners retake a single failure. A new model or feature earns a default recommendation only after repeatable **cross-category** validation, not its published feature list.
 
-Creator visibility may vary: full/upper body, face, hands-only, product-only, or no visible person where the story permits. Do not force long talking-head shots to “prove” UGC authenticity.
+## 21. VO and CapCut assembly
 
-Product identity and scale are enforced by the Image Fidelity and Image Analyzer authority system, not by long repetitive description here.
+Videos default to **silent footage**. Spoken persuasion is produced separately as one coherent external VO track and can span multiple clips. No native voice consistency/lip-sync tests are required for the main pathway.
 
-## 15. Credible human and product motion
+Once footage is usable, coordinate a single natural sales narrative, trim dead time, cut on physical/action or visual contrast, keep text and labels readable, and apply only necessary captions and optional music. Use light matching to reduce cross-clip color disparities without covering visible generation failures. No need to stretch a clip to match an initially suggested sentence length. Keep the final edit commercially purposeful.
 
-Prefer:
-- small meaningful hand movement
-- natural grip changes only where necessary
-- short lift, place, press, rub, pour, tap, adjust, wipe or wear actions
-- small head/eye reactions appropriate to context
-- stable camera or limited plausible handheld sway
-- movement that respects gravity, inertia, occlusion, contact and object weight
+The Video Analyzer may draft commercial timing guidance, but a dedicated VO execution stage owns the final continuous wording and the user/editor owns the final CapCut timeline.
 
-Avoid:
-- exaggerated acting, overexpressive blinking and gaze wandering
-- dramatic zooms, excessive camera travel, chaotic handheld shake
-- unnatural hand/object speed, floating products or duplicated parts
-- high-complexity simultaneous face/hand/product performance
-- long holds in which nothing useful happens
+## 22. Output expectations by caller
 
-If an action is animation-risky, simplify it or select a nearby starting state; do not compensate by adding more adjectives or contradictory negative rules.
+**Strategist:** Commercial visual beat map with purpose, one-action opportunities, different A/B/C visual journeys, buyer-use payoff, generic-prop plan, and VO message role. No model lock, exact video prompt or full final script.
 
-## 16. No-talking default and VO integration
+**Image Analyzer:** Exactly N approved starting images for N planned independent development clips, each with frame-one present/not-yet/action, multi-anchor continuity, selected minimal relevant image references, PASS/REVISE notes and image-to-clip mapping. Do not add extra images solely because a model *could* use them.
 
-Assume the creator is **not delivering the voiceover on camera**. The image/video prompts should not accidentally require speech, lip-sync or mouth-synchronized performance unless the user selected dialogue mode.
+**Video Analyzer:** Map actual approved images by visible contents and handoff signatures; review full story; propose succinct clip motion/risk/edit plan and a feasible *test mode*, not a forest of engine choices. After approval, generate **one** engine-ready video prompt at a time and review each returned clip. Include end-state and editing guidance. In development, allow the user to explicitly change engine/format for comparisons while keeping creative intent constant.
 
-A voiceover may continue over several visuals and across cuts. The visual does not need to literalize every line. It may demonstrate, establish context, build tangibility, create momentum, or deliver a relevant payoff while the VO explains why the buyer should care.
+**Assembly:** Final order/trim proposal, continuous VO alignment, useful cut points, modest color consistency suggestions, omitted/revised clips and commercially sufficient ending.
 
-Do not pad VO with descriptions of obvious actions (“Now I open the jar”). Do not stretch video to fit a planned reading duration; fit the actual footage and the approved narrative together during VO execution/assembly.
+## 23. Universal check before proposing motion
 
-Native speech/dialogue is supported as a **clearly optional** variant. Do not redesign the default workflow around native voice consistency or lip-sync.
+Ask only questions that affect the next decision:
+- Does the viewer get useful new visual/commercial information?
+- Is the intended movement possible from **this exact first frame**?
+- Does it preserve face, product, room, props, labels and measured scale?
+- Is one action enough? Is action completion preferable to preparation-only?
+- Does the shot work with silent video and one continuing VO?
+- Is the expected usable footage worth the retake and credit risk?
+- If it fails, can we revise only one clip?
 
-## 17. B-roll and supporting inserts
+Avoid padding reports with every technical concern if it doesn't affect the chosen test.
 
-B-roll is useful only if it adds something. Good reasons:
+## 24. Versioning, workflow testing and doctrine
 
-- clarify product texture, feel, size, build, or controls
-- reveal a meaningful product state or use mechanism
-- demonstrate a buyer-relevant convenience
-- provide a believable action bridge that avoids a complex transition
-- create a clearer payoff or a better CTA hero frame
-- create purposeful variety within a stable session
+Current skill version is a **development iteration**. Keep a log of assumptions versus actual Kling tests. Do not lock model, entry mode, JSON prompt format or longer multi-keyframe workflow until representative trials establish repeatable fidelity, physics, color and per-usable-second economics across serum, protein and at least one other product category.
 
-Do not insert redundant tapping, rotating, zooming, slow product holds, or generic lifestyle imagery simply to reach a target beat count. Maintain product identity and reference support.
+Remote GitHub loading is optional. Master prompts may retrieve this skill by URL and report the **actually confirmed** version, or use a concise embedded fallback without claiming retrieval. Updating this skill alone does not change old master prompts automatically. Preserve existing finished zero-based handoffs; start future coordinated workflows with 01 IDs.
 
-If a high-value B-roll insert needs a special source reference (interior, applicator, underside, label), mark that dependency before generation. If unavailable, find another visual rather than inventing geometry.
-
-## 18. Payoff design
-
-Every narrative should resolve its visual promise when appropriate. The payoff must fit the product and the commercial thesis.
-
-Examples:
-- skincare: believable completed application and natural post-routine moment, not instant impossible skin transformation
-- powder: mixed product or a practical ready-to-drink shot, not sudden physique transformation
-- electronics: wearable in use or a grounded interaction with an actual feature
-- apparel: fit or styling in motion, not body-shape alteration
-- cleaning: plausible completed area or action, not unexplained magical change
-
-A payoff is not always a dramatic before/after. It may simply be useful completion, design desirability, convenience, or experience. The Strategist owns whether the payoff supports the sales argument; production systems own how it looks and moves.
-
-## 19. Cut and edit design
-
-Each beat should have a visual entrance and exit that can survive a hard cut. Useful cut points include:
-
-- the moment before an action begins
-- a clear detail or short completed motion
-- a physical state change that an edit can skip over
-- a tighter cut to a complementary angle
-- a follow-through or payoff reveal
-
-Do not promise a particular effect or frame-exact cut before clips exist. The Video Analyzer can recommend target usable sections; CapCut establishes actual edit points.
-
-Use sound and captions only where helpful. A clean VO, purposeful cuts and readable product visuals generally matter more than busy motion graphics. Do not require external tools beyond the planned voice service and CapCut for core beginner workflow.
-
-## 20. Prompt economy and engine-neutrality
-
-When passing video guidance, favor concise executable information:
-
-1. **What the viewer sees** (subject, scene, starting state)
-2. **One action** to perform
-3. **What must remain stable** (product, creator, environment)
-4. **What must not happen** (specific likely failure)
-5. **What makes the ending usable for an edit**
-
-Do not prescribe Kling 3.0 vs 4.0, Omni vs Keyframes, text vs structured sections vs arbitrary JSON-style prompt. The Video Analyzer should run controlled tests before locking an engine/prompt format.
-
-Avoid long lists of micro-directives, contradictory instructions, or trying to force the model to solve hard transitions by describing them more elaborately.
-
-## 21. Outputs and handoffs by stage
-
-### When called by the Strategist
-
-Include a supporting-prop audit and visually distinct concept routes without forcing unavailable branded items.
-
-Suggest or validate:
-- `product_interaction_profile`
-- candidate beat families and recommended beat count
-- meaningful visual progression and credible payoff
-- high-level complexity/cut-over warnings
-- shot variety and B-roll opportunities
-- `voiceover_message_role` per beat, without a full final script
-
-The Strategist's JSON schema remains authoritative. No separate mandatory document is required from this skill.
-
-### When called by the Image Analyzer
-
-Establish an identity anchor for any approved generic unbranded supporting prop and carry its state consistently across keyframes.
-
-For each beat ensure:
-- unambiguous visual function
-- approved product/state references are available
-- feasible first frame with useful motion remaining
-- meaningful composition change without losing the Session Environment Anchor
-- natural grip/body/product physics, with image-fidelity help
-- continuity checks against the approved Session Master and other beats
-
-The Image Analyzer owns all concrete image-generation output.
-
-### When called by the Video Analyzer
-
-Preserve supporting-prop visual identity and state through generated footage; do not add new branded props.
-
-For each beat or proposed group of beats ensure:
-- one primary action and motion complexity rating
-- expected safe states and physical dependencies
-- choice between one continuous generated segment or short separate inserts
-- stable product, creator, room and camera character
-- practical trim/cut opportunities and dead-time risks
-- VO-friendly final edit sequence
-
-The Video Analyzer chooses the model, duration, prompting format and engine-specific settings experimentally.
-
-## 22. Example: powder product without a fixed template
-
-A sensible six-beat concept **could** be:
-
-1. Hook: visually compelling product/routine relevance
-2. Detail: lid opens (one action)
-3. Preparation: a supported scoop already in or near powder
-4. Use: loaded scoop pours into a shaker
-5. Payoff: finished shake in a plausible context
-6. CTA: clean product/recommendation hero
-
-But if the commercial thesis is design/value rather than preparation convenience, the sequence should change. The commercial reason to buy is not “watch me scoop.” A different category should not inherit this sequence.
-
-## 23. Lean QA before generation and after review
-
-Ask only what changes the current production decision:
-
-**Commercial:** Does this beat add buyer-relevant information or make the approved ad more persuasive?
-
-**Visual:** Is it distinct without feeling like a new room/session? Does it show what matters? Are alternative concepts visually and structurally different? Are generic supporting props consistent across beats?
-
-**Physical:** Can the action and state really work? Are enough references provided?
-
-**Motion:** Can the AI perform the action simply, or should we cut?
-
-**Editing:** Is there usable material to trim? Is the beat neither idle nor overloaded?
-
-**Audio:** Does the footage support one continuous external VO story without talking-head dependence?
-
-**Economy:** Is this shot worth the generation credits and editing time?
-
-Reject or simplify beats that fail in several categories. Do not rewrite every prompt because one stochastic artifact occurs.
-
-## 24. Failure classification and iteration
-
-When testing a full ad, identify the root cause before adjusting the workflow:
-
-- `STRATEGY_FAILURE`: weak buyer-care argument, payoff/CTA absent, repetitive commercial idea
-- `BEAT_DESIGN_FAILURE`: redundant beats, unclear visual jobs, poor progression or dead-time structure
-- `REFERENCE_FAILURE`: missing product state, inadequate environment/identity source
-- `CONTINUITY_FAILURE`: creator, room, product, or state drift across images/clips
-- `PHYSICAL_FAILURE`: unrealistic object interaction, anatomy, pouring, or transformation
-- `VIDEO_ENGINE_FAILURE`: valid beat/keyframe yields defective motion despite sane instructions
-- `EDIT_AUDIO_FAILURE`: footage, voiceover or cuts do not combine into a persuasive rhythm
-
-Fix the smallest responsible layer first. Preserve proven rules. Across full tests, revise linked master prompts and skills coherently before tagging stable versions. Keep generated footage and test observations as evidence; do not lock the engine choice on one good result.
-
-## 25. Portability and final doctrine
-
-This is a portable Markdown skill. It does not require GitHub access, plugins, native audio, a paid model, an image generator API, or any single video engine. The main workflow may retrieve it via a public raw skill URL when available, otherwise use a lean embedded fallback.
-
-**Final doctrine:** Editing creates rhythm. Good product interactions create tangibility. Simple actions improve realism. Continuous VO carries persuasion. One believable session across purposeful visual beats beats forcing a synthetic actor to perform everything in one take.
+**Final doctrine:** Commercial meaning selects the shot. The approved image defines its first frame. One simple action creates usable motion. Edit cuts create pace. Multi-anchor continuity protects reality. Silent independent clips and one continuous VO give the user flexibility to replace failures without regenerating the whole ad. The video engine must earn its place through controlled evidence.
