@@ -5,10 +5,10 @@ license: Proprietary
 compatibility: Portable plain-Markdown Agent Skill. No GitHub access, plugin, API, video model, or editing software is needed to read or apply its principles.
 metadata:
   author: MarketerVibe
-  version: "1.2.0"
+  version: "1.3.0"
 ---
 
-# MarketerVibe UGC Visual Production Skill V1.2.0 DEV
+# MarketerVibe UGC Visual Production Skill V1.3.0 DEV
 
 ## 1. Role and operating philosophy
 
@@ -83,11 +83,11 @@ Prefer one physically clear action per independently generated clip: controlled 
 
 Split difficult chains into separate pre-established states and use a hard cut. Example: closed tub / **cut** / open tub / **cut** / scoop ready / **cut** / finished shake. A hard cut may skip a difficult opening or closing action, but it must not violate the object's physical state or insert an unapproved prop.
 
-Do not confuse simplification with stripping every action down to "almost about to". When the point of a beat is dispensing, lifting or pouring, the video should attempt that **one meaningful action** before downgrading to a mere readiness gesture.
+Do not confuse simplification with stripping every action down to "almost about to". When a physically credible, supported action is feasible, attempt that one meaningful action rather than padding the clip with readiness gestures. **Exception:** precise free-air liquid transfer from a tiny dropper to facial skin is not a default completion requirement; after repeated observed failures, prioritize a clean edit over physically implausible simulated liquid. Only attempt such dispensing as an explicit higher-risk user-approved experiment.
 
 **Motion-simplification ladder:**
 - L1: One realistic completed action.
-- L2: Same action with smaller range/slower pace.
+- L2: Same action with a simpler, still purposeful trajectory; reduce range or speed only when physics requires it.
 - L3: Minimal physically complete motion, early usable cut.
 - L4: Readiness/near-static fallback only after genuine technical difficulty.
 
@@ -104,18 +104,23 @@ Classify external supporting props as:
 
 A supplied screw-on lid or scoop is a **product component**, not a randomly regenerated generic prop. Approved recurring generic props get one identity anchor (shape, material, color, size, state) maintained across frames and clips. Keep fluid contents, scoop fill, closures, hand ownership and object support coherent.
 
-## 9. Starting-image authority and hidden geometry
+## 9. Frame-one coverage and reference-role routing
 
-The **actual approved image is the absolute visual authority for frame one**. The Image Analyzer handoff defines intention; if it describes a pose that is absent or already completed in the image, the Video Analyzer must describe the real visual state and revise the motion plan, not force frame one to metamorphose.
+The **actual approved starting image controls frame one**. A product source can govern its true identity but does not give the video engine unseen pixels unless it is physically supplied in that generation task and the chosen mode can use it. Never demand that a model reconstruct a hidden side merely through increasingly long negative instructions.
 
-Examples of useful first states:
-- closed tub partly entering from the side, with visible logo and hand already pressing its body
-- detached dropper already near an exposed cheek, ready for one small dispense
-- scoop handle already contacted by the hand, ready to lift
-- label already legible, requiring only very restrained camera/hand movement
-- creator looking toward product, ready for a small look to camera
+Before choosing an engine, conduct a **future visibility audit**:
+- What rigid product surfaces, printed information, hand regions, clothing or facial areas will become visible after frame one?
+- Are they fully present in the start image? If not, are they identity-critical or safe to infer?
+- Which additional approved source supplies that appearance, and does the actual selected mode support a **separate reference**, not merely another timeline keyframe?
+- Will motion expose more of a hand or arm than its frame-one reference shows? If yes, expect anatomy/skin-generation risk and first consider changing the starting image to show a more complete real hand.
 
-**Partial-frame product entrance test:** Preserve the approved entrance image and intended direction. Unseen surfaces remain an identity risk; a first-frame-only model may invent hidden label/body geometry. Where the chosen mode actually supports auxiliary references, compare using the original fully visible product as an explicit secondary identity reference; do not claim such reference support for a keyframes-only entry point. Otherwise note the risk and test the motion before modifying the starting frame. Do not pretend the model sees the full original product unless it was supplied in that specific generation task.
+**Observed development finding (two product-slide experiments):** single-start-frame Kling 3.0 Standard invented product packaging as the hidden portion entered view. Kling 4.0 Omni with a separate full-product reference improved overall shape/identity but did **not** eliminate duplicated printed elements or an artificial-looking partially revealed hand. Treat the pattern as a routing signal, not a universal engine guarantee.
+
+For hidden identity-critical geometry, recommend a **tested reference-capable path** before a blind first-frame-only path. In Kling Omni when the user's current interface supports it, explicitly distinguish the starting frame from the full product identity reference. The starting frame must keep its crop and hand position; the identity reference may only define the manufactured object as surfaces are revealed. Use reference identifiers such as `@Image1` and `@Image2` only when the interface accepts those tokens. A product packshot must not become the scene/camera authority.
+
+For a **brisk partial-frame entrance**, keep enough original branding in frame one, a physical pushing hand contacting the container BODY, room/counter continuity, and movement space. Let the slide happen promptly and decelerate naturally. A fast slide does not justify floating, product rotation, side-panel invention or label duplication. Evaluate hand appearance and new visible packaging independently.
+
+For a fully visible subject performing a simple human action, a first-frame-only video path can be the efficient default trial. This is a provisional *shot-type* recommendation, never a permanent model lock.
 
 ## 10. Multi-anchor and cross-clip visual continuity
 
@@ -141,64 +146,71 @@ Treat three different risks separately:
 
 Never instruct the video model to warm/cool/beautify an already approved frame just to disguise the mismatch. Test at the actual cut, not just while viewing isolated clips.
 
-## 12. Product physics and realistic human performance
+## 12. Realistic motion, natural sales energy and liquid physics
 
-Prioritize gravity, inertia, contact and containment. Closed solid packaging is generally more forgiving; open powder, liquid containers, tiny detached components, near-eye dropper contact, and moving labels are more fragile.
+Prioritize gravity, inertia, contact, containment, creator anatomy, surface texture and identity. The default commercial energy is **engaged, purposeful and naturally brisk**, not bored and low-motion, nor hyperactive AI-influencer acting. Scale movement to the action.
 
-**Creator behavior:** Low-key, natural, sparse blinking, stable expression, limited intentional gaze shifts, normal breathing, no exaggerated acting or scripted mouth movement. For external VO, **do not animate speaking**. Lips should remain at their natural frame-one state except minor incidental motion.
+**Motion energy by action family:**
+- `HOOK / ENTRANCE`: immediate decisive action, e.g. a brisk horizontal product slide with credible acceleration and deceleration; minimize idle setup.
+- `PRODUCT REVEAL`: a short confident lift/reposition at ordinary natural speed; label settles readable.
+- `TACTILE / RIGID`: crisp simple manipulation, one hand role, product remains physically supported.
+- `LABEL DETAIL`: minimal camera/object motion for typography stability; trim short in edit.
+- `SKIN / FACE CONTACT`: soft normal-speed pat/withdrawal, subtle engaged eyes, not an extended frozen pose.
+- `CTA`: gentle but confident human expression and product memory; no forced speaking mouth.
 
-**Hands:** realistic grip, thumb opposition, wrists, pressure, skin contact, object weight and one stable support role. No duplicate hands, teleports, product inflation or detached fingers.
+The chosen generated render length is **not the chosen edit length**. Complete attention hooks near the beginning of the render where feasible, and cut out the remaining dead hold. If timing matters, express it as an approximate early-action target (e.g. slide completed near first second), never a guarantee or license for physically impossible speed.
 
-**Objects:** no cap duplication, disappearing lids, deformed scoops, flying powder, expanding bottle, liquid pouring through glass or moving without cause. Transparent pipettes and liquid should obey source state and plausible gravity/surface tension; a drop is small rather than a manufactured stream.
+**Creator:** lively but credible eye and facial behavior; preserve original expressive intent. Avoid sleepy slow acting, excessive blinking, dramatic surprise, forced smile, prolonged sideways staring, lip-sync and random swaying. In external-VO mode the person need not talk.
 
-**Camera:** stable or modest phone-like motion by default; dynamic camera motion is an explicit motivated exception. Do not add zoom/orbits/pans to hide an idle beat. Small genuine product movement can be better than simulated camera drift.
+**Hands:** require actual contact, skin texture, normal fingernails and credible pressure, wrist/forearm continuity, stable thumb opposition and believable mass. If part of a hand must emerge from offscreen, prefer improving **frame-one hand coverage** over another long prose prompt. A real creator-hand reference may be trialed in a compatible reference mode, but it must not substitute another person's identity or transform the frame-one pose. Flag plastic/waxy fingers as a meaningful human-fidelity defect.
 
-## 13. B-roll and pacing designed for editing
+**Liquid physics:** a single forced tiny drop is not inherently how a squeeze dropper dispenses liquid; quantity depends on bulb compression, fill and viscosity. Two observed serum dropper-to-cheek generations (Kling 3.0 Standard and 4.0 Omni) showed unconvincing appearing-on-skin liquid and/or disconnected trajectories. **Default to cut-over-liquid complexity**: detached applicator detail / hard cut / creator already patting serum into skin. Other practical alternatives: a product-ready pose without visible discharge, or natural finger/back-of-hand application when source and user support it. Do NOT generate fake liquid to imply a completed interaction. Direct visible liquid transfer is optional and explicitly high-risk, not globally banned if the user wants to experiment.
 
-Good B-roll helps interpret the product: category text, tactile reality, fit, texture, size, motion, packaging callouts, credible use and payoff. Bad B-roll shows the same product repeatedly with no new information.
+**Objects:** preserve exact component count, rigid product shape, label geometry, powder/serum state, countertop contact, no extra props, disappearing lids or warped pipettes. Camera stays stable smartphone-native unless motion clearly serves the shot.
 
-Each generated clip needs:
-- recognizable stable opening based on the exact image
-- one specific event or intentional near-static detail
-- enough visually usable material for a trim
-- a useful cut exit, ideally after one clear completion
+## 13. Edit-driven rhythm and usable action window
 
-Don't prescribe equal durations. A 5-second render may yield only 1.5 seconds of useful footage; actual trim length is determined after review. A single continuous VO should bridge clips without requiring one sentence or one breath per image. Let visual action support the buyer message, not narrate obvious mechanics.
+Useful B-roll adds distinct information: label/category, physical scale, component state, preparation, tactile feel, finished use or relevant buying cue. Do not produce several long near-identical product holds to fill a target duration.
 
-## 14. Engine-neutral video planning and test architecture
+Plan three windows for each clip: **action begins**, **useful moment/clear completion**, **safe cut/trim exit**. Avoid long delays before action and overly generous static tail. Recommend a usable edit range only after reviewing actual footage. An illustrative 4-second render might supply a good 0.8-1.5-second product hook or a 1-2-second facial pat; these are not fixed prescribed timings.
 
-The **Video Analyzer**, not this skill, chooses a model, entry point, prompt format, quality mode or exact clip duration. The skill offers a structured comparison method. For REBUILD_V1:
+When a reference-led product slide succeeds mechanically but has a duplicated printed label or artificial hand, classify those defects independently. Shortening the edit does not make inaccurate packaging acceptable if the defect remains visible in the kept section.
 
-**Baseline path:** Separate silent image-to-video generations from the approved starting images. Compare single-clip methods before trying to replace the entire independent-clip workflow.
+Cross-clip lighting/exposure mismatch may need limited CapCut matching. Do not invent a different light source or force the video to recolor an approved starting frame to disguise a cross-image mismatch.
 
-**Candidate categories** (capabilities MUST be rechecked in the current official UI/docs):
-- first-frame-only image-to-video for simple human/object action
-- image-to-video with first frame plus *genuine* additional element/product references for identity-sensitive motion
-- 4.0 Keyframes for a controlled single clip with first/last frames when an approved end state exists, or an explicitly approved multi-keyframe experiment
-- 4.0 Omni for reference-rich action or identity preservation when its controls support the intended task
-- optional lower-cost/Flash modes as quality-vs-credit comparison, not assumed equivalent capabilities
+The continuous external VO carries persuasion across cuts. Clips do not need their own dialogue or identical run times. Short useful motion beats + sensible trim + confident conversational VO produce energy more reliably than asking a silent model to overact.
 
-Do **not** equate "Omni Reference" with "Keyframes"; they are distinct creation paths with different supported reference types. Do not place unrelated approved ad frames as middle keyframes and expect natural edit-style cuts to be reliable without testing. If a single long multi-keyframe generation fails one transition, the entire output may need regeneration, reducing the advantage of its longer duration.
+## 14. Conditional engine routing and independent video architecture
 
-**Video model availability and prices may change.** Record exact UI model labels and charged credits rather than building hardcoded version rankings/prices into this skill.
+The **Video Analyzer**, not this skill, owns engine choice, UI-specific upload instructions, exact settings, prompt syntax and clip-by-clip approvals. Do not permanently lock one Kling model from a few samples.
 
-## 15. Controlled experiment protocol
+**Current provisional shot-type routing, derived from tests:**
 
-For a fair comparison, hold constant whenever supported:
-1. Same approved starting image and intended one action.
-2. Same resolution, aspect ratio, duration, audio-off preference and broad camera direction.
-3. Semantically equivalent instructions: subject, action, locks, ending.
-4. Equal reference assets **when the capability being tested isn't reference support**.
-5. Same practical acceptance standard and clips viewed at normal playback speed.
+| Shot need | First trial to consider | Evidence and caveat |
+| --- | --- | --- |
+| Identity-critical product moves from cropped/offscreen into view | A reference-capable Kling 4.0 Omni mode using start image + distinct full product image, if current UI permits | Better product completion than tested 3.0 Standard, but duplicate text and hand problems persisted |
+| Subject fully visible, simple facial/hand movement | Kling 4.0 Keyframes interface with **only the starting frame** (or comparable first-frame I2V) | Serum pat-in yielded a usable natural short clip; no extra keyframe required |
+| Fully visible label/product detail | Available first-frame-only path with very restrained motion | Unverified for every model; prioritize stable printed text |
+| Hard multi-stage physical actions or precise liquids | Separate edited clips; simplify or omit the fragile transfer | Both tested serum dropper-dispense paths failed; do not force Omni to fix physics |
 
-Compare one variable at a time where possible. Some models inherently support different reference controls or durations; **record those as meaningful limitations**, not as perfectly controlled comparisons. Start with one high-information exploratory test per candidate, then repeat finalists when randomness makes results unclear. Avoid an expensive full 5–6-clip matrix until the two difficult probe shots identify good candidates.
+Treat Kling 3.0 Standard, 3.0 Omni, Kling 4.0 Omni, 4.0 Keyframes and other accessible modes as **experiments**; current UI features, duration and credits must be confirmed rather than presumed. Distinguish Omni's auxiliary image reference from the *additional timeline keyframes* in Keyframes mode. A Keyframes task with only its first frame does not magically see a separately uploaded product source.
 
-Recommended probe shots from current development evidence:
-- protein tub sliding partly in from the right edge (hidden geometry, label stability and hand contact)
-- skincare dropper dispensing near cheek (precision, liquid physics, facial integrity)
-- optional label-row close-up (letter/icon stability) and creator CTA (subtle gaze).
+Baseline remains **one approved starting image -> one separately generated silent clip**, replace failed clips locally, assemble VO/cuts later. Multi-keyframe full-ad generation is an optional side experiment with explicit user approval and retake-cost evaluation. Never silently switch to a single long render.
 
-Measure **usable final-edit seconds**, not just generated seconds. A cheaper generation that repeatedly fails may cost more per usable second.
+If a user has **explicitly selected** a mode, respect it and report risks; suggest a reference-capable alternative only when the observed failure warrants it. Preserve chosen user creative experiments, including the partial-frame tub slide.
+
+## 15. Credit-aware controlled tests
+
+Hold the same starting image, intent, approximate render length, aspect ratio, quality/audio settings, and meaningful hard locks across comparable trials where supported. Record when reference capability itself changes, as that is **a different workflow condition**, not a perfectly controlled model-only comparison.
+
+Recommended development probes in sequence:
+1. Cropped product entrance: first-frame-only vs separate-full-reference path; inspect **label text and hand anatomy**, not just overall shape.
+2. Same reference-capable product entrance: normal vs **brisk front-loaded slide prompt**; compare arrival time, hand position, kept segment and product fidelity.
+3. Simple human follow-through: one-frame Keyframes serum pat-and-release or equivalent; inspect face/skin/hand, gaze and usable duration.
+4. Other shot families, only after these probes: label B-roll, scoop lift, creator CTA.
+5. Direct dropper-to-face liquid dispensing is **not** a mandatory default probe after repeated failure. Retest only with a materially changed physical setup or explicit user request.
+
+Repeat finalists only when results are ambiguous or random variation matters. Measure spend, useful seconds and retakes. One passing video never proves an engine globally superior. After the full serum, protein and third-category advertisements are edited, compare clip quality, continuity and commercial effectiveness before locking the stack.
 
 ## 16. Kling prompting formats: distinguish API payload from natural-language prompt
 
@@ -211,67 +223,56 @@ Test prompt communication after finding plausible engine behavior:
 
 A native API multi-shot array, when supported, is not equivalent to pasting JSON as free text. Prefer the engine's documented fields for actual API use. Avoid bloated prohibitions, conflicting camera directions or over-animating micro-behaviors. Never output API payload as a website-ready prompt unless its UI genuinely accepts that format.
 
-## 17. Minimal video prompt anatomy
+## 17. Minimal engine prompt anatomy and reference instructions
 
-Every engine-ready clip prompt should normally specify:
-1. **Frame-one lock:** start from the supplied image without redesigning it.
-2. **One primary action:** one natural motion that still remains to be performed.
-3. **Motion size and physical behavior:** realistic duration/amount, gravity, grip, stable product orientation.
-4. **Appearance continuity:** protect product label, human/face, environment, hair, wardrobe, materials, lighting.
-5. **Camera behavior:** stable smartphone perspective unless intentional movement has a reason.
-6. **Usable exit state:** where the motion ends for a cut.
-7. **Audio:** no generated dialogue/native sound/music if the selected interface supports audio-off. Otherwise remove unwanted soundtrack in assembly, and explicitly flag the limitation.
+For any per-clip engine-ready prompt, supply only the inputs the model can truly receive:
+1. **Frame-one authority:** exact starting image and existing pose/state.
+2. **Reference roles if supported:** e.g. `@Image1` starting environment/hand/composition, `@Image2` full identity of cropped product. Explicitly instruct that the packshot is **not** a new scene or end keyframe.
+3. **Single action + energy:** direct, understandable movement; brisk for a product entrance, gentle for skin contact; avoid contradictory pacing words.
+4. **Hard visual locks:** shape, source label, component count, creator, contact, stable camera/environment/lighting.
+5. **Completion and edit exit:** what should become fully visible or physically settle; trim dead tail.
+6. **Only likely-failure prohibitions:** no duplicate text, hand morph, label changes, impossible liquid, extra product, etc.
+7. **Audio OFF in controls** whenever possible. A text-only 'silent video' command is not a reliable native-audio disable; mute in final assembly if UI cannot disable it.
 
-Engine-specific syntax, image slots, model settings and number of negative directives are the Video Analyzer's responsibility. Compact execution instructions beat a JSON dump of the entire Strategist/Image Analyzer handoff.
+For time-directed attention hooks, favor e.g. 'the tub slides in immediately and comes to rest near the first second' over 'slow smooth controlled movement'. Do not ask for unrealistic acceleration or camera tricks to manufacture energy.
 
-## 18. Video QA and failure classification
+Do not dump the whole Image Analyzer JSON into Kling, claim support for invented reference tokens, or use JSON free text as a presumed special structured format. Website prompt text, API JSON envelope, and native multi-shot schemas are different concepts; test each fairly.
 
-Review the generated VIDEO, not only the first frame. Evaluate:
-- starts from approved frame without unexpected changes
-- action happens plausibly and meaningfully, not just idling or inventing extra actions
-- creator facial identity, gaze, micro-expression, fingers and body stay coherent
-- product silhouette, dimensions, labels and parts remain stable
-- liquid/powder behaves plausibly and intended action completes where needed
-- visible room and lighting stay coherent within clip; compare color/exposure across cuts
-- no unwanted speech, subtitles, logos, extra props or soundtrack
-- edit usability: clear moment to keep/trim; meaningful end or cut
+## 18. Video QA: separated quality dimensions and vetoes
 
-Use decisions `PASS`, `PASS_WITH_CAUTION`, `REVISE`, `SKIP` or `ENGINE_LIMITATION` with clear evidence. `PASS_WITH_CAUTION` must name the risk and what a final edit can safely hide; it isn't equivalent to unconditional PASS. `SKIP` requires checking that the commercial narrative remains understandable.
+Review actual video through multiple points in time and at normal playback speed. Rate separately: **motion/commercial pace; manufactured product/label accuracy; creator/hand realism; physics; environment/color stability; edit usability; unwanted audio**. A fast slide may pass motion and still FAIL product fidelity.
 
-Failure origins:
-- `START_IMAGE_LIMITATION` (starting state doesn't allow intended action)
-- `REFERENCE_OR_IDENTITY` (model invents unseen product/prop or changes person)
-- `MOTION_COMPLEXITY` (too many interactions or movements)
-- `PRODUCT_OR_LIQUID_PHYSICS` (deformation, spilling, impossible contact)
-- `TEXT_AND_LABEL_STABILITY` (warped logos/iconography)
-- `WITHIN_CLIP_COLOR_DRIFT` vs `SOURCE_IMAGE_COLOR_DIFFERENCE` vs `EDIT_MATCHING`
-- `ENGINE_CAPABILITY` (valid setup repeatedly fails on a given model/mode)
-- `PROMPT_AMBIGUITY` (unclear instruction)
-- `BEAT_OR_COMMERCIAL_FAILURE` (boring shot, weak payoff, unnecessary repetition)
-- `AUDIO_ARTIFACT` (unwanted speech/sound in silent workflow)
+**Hard-failure examples:** duplicated `NET WT.`/weight text, fabricated side-panel design, changed orange logo or category, deformed tub, waxy/plastic fingers covering label, pipette liquid appearing on skin without believable transfer, new face/hand/object, extreme room changes. An error that remains visible in the proposed final cut is not excused because the rest of the clip looks attractive.
 
-Fix the smallest responsible layer. A valid but unsuccessful video generation doesn't automatically justify rewriting the Strategist or source image prompt.
+Decisions: `PASS`, `PASS_WITH_CAUTION` (only if defect demonstrably avoidable by trimming/matching), `REVISE`, `SKIP` (with narrative continuity check), `ENGINE_LIMITATION` (repeated valid failure).
 
-## 19. Revision, credit use and retake logic
+Distinguish root causes: `HIDDEN_PRODUCT_INFORMATION`, `REFERENCE_MODE_MISMATCH`, `START_FRAME_HAND_COVERAGE`, `PRODUCT_LABEL_DUPLICATION`, `HAND_PLASTICITY`, `ACTION_TEMPO_TOO_SLOW`, `PRECISION_LIQUID_TRANSFER`, `SOURCE_COLOR_MISMATCH`, `WITHIN_CLIP_COLOR_DRIFT`, `EDIT_MATCHING`, `PHYSICS_COMPLEXITY`, `PROMPT_AMBIGUITY`, `MODEL_CAPABILITY`, `COMMERCIAL_BEAT_WEAKNESS`, `UNWANTED_AUDIO`.
 
-- Preserve approved source assets, commercial purpose and successful parts of the prompt.
-- If one-action physics fails, reduce range/complexity first; try a different tested model/mode if it is clearly an engine limitation.
-- If the original first frame is already impossible for the intended motion, **escalate to Image Analyzer**, not repeated blind video prompts.
-- If product geometry is missing from a first-frame crop, compare an **actual supported reference-capable engine** instead of asking the model to "remember" an image it never received.
-- If action succeeds but color shifts inside the clip, correct motion/prompt/mode. If source frames mismatch, defer modest matching to CapCut or report image-stage root cause.
-- Regenerate **only the failing clip** when the separate-clip baseline is in use; keep passing clips.
-- Always provide a complete replacement video prompt on REVISE, not a list of detached patches.
-- Track number of generations, revisions, seconds and credits. Avoid declaring a feature solved after one lucky run.
+If an error is concentrated in the last 2 seconds while the first 1 second is clean, an edit may pass. If the logo/label is already wrong during the intended usable entrance, REVISE. Do not use a superficial total score to conceal a fatal product-truth error. If only screenshots are available, do not claim action timing, duration, audio, or movement fidelity.
 
-## 20. Test log and acceptance metrics
+## 19. Revision and escalation order
 
-Each test should record:
+1. **Trim first** if an actually clean useful motion segment exists and the defects are outside it.
+2. **Retarget tempo/action** if product/hand fidelity is good but a hook is sluggish. Change only motion timing and a few critical instructions.
+3. **Add supported full-product references** if the engine must reconstruct a hidden identity-critical surface; do not rely on extra negative text.
+4. **Improve hand coverage** by using an approved starting frame that already shows the relevant fingers/palm; a compatible same-creator hand reference is an optional test, not a guarantee.
+5. **Simplify physical action / cut around it** if precise liquid/face/powder physics fail. Do not reroll the same one-drop-to-cheek prompt repeatedly.
+6. **Change engine/mode** if valid inputs repeatedly fail and an alternate mode can address the actual missing capability.
+7. **Escalate to Image Analyzer** only if the starting frame itself is unsuitable. Preserve the selected Strategist concept unless the user approves a redesign.
 
-`test_id`, `product_and_clip_id`, `starting_image_id`, `engine_exact_label`, `entry_mode`, `resolution`, `duration_generated_s`, `native_audio_setting`, `prompt_format`, `reference_assets_and_roles`, `prompt_revision`, `charged_credits`, `usable_seconds`, `frame_one_fidelity`, `product_identity`, `creator_identity`, `physics`, `color_stability`, `commercial_usefulness`, `decision`, `failure_root_cause`.
+Regenerate **only the failed clip**. Every REVISE returns a complete copy-ready prompt with the changed assumptions clearly named. Record credit spend, failure origin, editable seconds and the hypothesis for next attempt. Avoid endless prompt edits without meaningful input/mode changes.
 
-Optional useful fields: `compared_to_test_id`, `cut_in_out`, `retake_count`, `viewer_noticeability`, `notes`.
+## 20. Test log and evidence discipline
 
-Score actual outcomes rather than engine marketing. Prefer a workflow that reliably preserves products, produces usable footage quickly and lets beginners retake a single failure. A new model or feature earns a default recommendation only after repeatable **cross-category** validation, not its published feature list.
+Record: `test_id`, `product/clip`, `starting_image_id`, `engine_actual_mode`, `reference_roles_and_count`, `extra_visible_identity_coverage`, `render_duration`, `audio_enabled_in_UI`, `prompt_format`, `action_target`, `action_completion_time_observed`, `charged_credits`, `usable_edit_range`, `motion_grade`, `product_label_grade`, `hand_realism_grade`, `physics_grade`, `color_grade`, `edit_grade`, `decision`, `failure_code`, `rerender_reason`.
+
+Observed current evidence, not locked policy:
+- Kling 3.0 Standard, protein partial-frame slide: missing product area was invented; result rejected.
+- Kling 4.0 Omni with separate full-product source, protein slide: substantially improved geometry, but label duplication and artificial hand persisted; changing prompt yielded faster entrance.
+- Kling 3.0 Standard and 4.0 Omni, dropper-to-cheek liquid: both visibly implausible.
+- Kling 4.0 Keyframes with first frame only, serum cheek pat: usable natural motion after trimming.
+
+Do **not** claim success for other product types, other engine settings, or the full assembled ad until tested. Use credit cost per accepted edit second and consistency at actual cuts when comparing workflows.
 
 ## 21. VO and CapCut assembly
 
@@ -281,33 +282,34 @@ Once footage is usable, coordinate a single natural sales narrative, trim dead t
 
 The Video Analyzer may draft commercial timing guidance, but a dedicated VO execution stage owns the final continuous wording and the user/editor owns the final CapCut timeline.
 
-## 22. Output expectations by caller
+## 22. Outputs by calling stage
 
-**Strategist:** Commercial visual beat map with purpose, one-action opportunities, different A/B/C visual journeys, buyer-use payoff, generic-prop plan, and VO message role. No model lock, exact video prompt or full final script.
+**Strategist:** Product-aware creative beats, distinct A/B/C options, reasonable interaction risks, meaningful visual progression, payoff, generic prop policy, VO message direction. Not an engine picker.
 
-**Image Analyzer:** Exactly N approved starting images for N planned independent development clips, each with frame-one present/not-yet/action, multi-anchor continuity, selected minimal relevant image references, PASS/REVISE notes and image-to-clip mapping. Do not add extra images solely because a model *could* use them.
+**Image Analyzer:** N approved starting frames for N individual development clips, multi-anchor identity, edit-ready motion runway, source-complete product/state, economical references. For a shot revealing hidden product/hands, flag the **future visibility dependency** without automatically cancelling the idea.
 
-**Video Analyzer:** Map actual approved images by visible contents and handoff signatures; review full story; propose succinct clip motion/risk/edit plan and a feasible *test mode*, not a forest of engine choices. After approval, generate **one** engine-ready video prompt at a time and review each returned clip. Include end-state and editing guidance. In development, allow the user to explicitly change engine/format for comparisons while keeping creative intent constant.
+**Video Analyzer:** Visually map actual starting images; preflight expected motion and unseen geometry; choose conditional engine and reference coverage; publish a concise full-clip plan; after approval generate one clip prompt at a time; review actual clip and make a cause-specific PASS/REVISE with usable cut range. Record observed timing and label/hand/physics defects separately. Default silent videos + external VO.
 
-**Assembly:** Final order/trim proposal, continuous VO alignment, useful cut points, modest color consistency suggestions, omitted/revised clips and commercially sufficient ending.
+**Assembly:** Trim dead tails, match modest color differences, lay one natural energetic VO over cuts, preserve product readability, omit failed segments only with buyer-story/CTA coverage.
 
-## 23. Universal check before proposing motion
+## 23. Preflight check before any generation
 
-Ask only questions that affect the next decision:
-- Does the viewer get useful new visual/commercial information?
-- Is the intended movement possible from **this exact first frame**?
-- Does it preserve face, product, room, props, labels and measured scale?
-- Is one action enough? Is action completion preferable to preparation-only?
-- Does the shot work with silent video and one continuing VO?
-- Is the expected usable footage worth the retake and credit risk?
-- If it fails, can we revise only one clip?
+- Is the approved starting image actually suitable for the intended one action?
+- Will the movement reveal **unseen logo, text, bottle/tub surfaces, fingers or forearm**? If yes, is the additional identity information available through the chosen mode?
+- Is a branded product visually correct already? Are any text/label changes unacceptable in the final cut?
+- Is the action's tempo appropriate to selling rather than sleeping, without breaking physics?
+- Are liquid or tiny near-face tasks better communicated by an edit than direct simulation?
+- Does the clip contribute new information? Can it be cut at a clean useful moment?
+- Have native audio settings been disabled, rather than relying only on written words?
+- Can a failed clip be rerendered independently at acceptable credit cost?
 
-Avoid padding reports with every technical concern if it doesn't affect the chosen test.
+Don't bury users in a form or a giant test matrix. Make a recommendation and ask for only essential missing inputs.
 
-## 24. Versioning, workflow testing and doctrine
+## 24. Versioning, workflow testing and final doctrine
 
-Current skill version is a **development iteration**. Keep a log of assumptions versus actual Kling tests. Do not lock model, entry mode, JSON prompt format or longer multi-keyframe workflow until representative trials establish repeatable fidelity, physics, color and per-usable-second economics across serum, protein and at least one other product category.
+**V1.3.0 DEV** is a test-informed update, not a LOCKED engine recommendation. Continue testing multiple clip families and full edited ads. Validate against serum, protein and at least one third product category before locking any Kling model, default prompting format or multi-keyframe approach.
 
-Remote GitHub loading is optional. Master prompts may retrieve this skill by URL and report the **actually confirmed** version, or use a concise embedded fallback without claiming retrieval. Updating this skill alone does not change old master prompts automatically. Preserve existing finished zero-based handoffs; start future coordinated workflows with 01 IDs.
+Loading a remote skill is optional. If actually fetched, report its true version. If unavailable, use a lean embedded fallback without inventing a skill-load result. Keep legacy zero-based handoffs unchanged; use one-based IDs for new compatible productions, and synchronize numbering across all modules later.
 
-**Final doctrine:** Commercial meaning selects the shot. The approved image defines its first frame. One simple action creates usable motion. Edit cuts create pace. Multi-anchor continuity protects reality. Silent independent clips and one continuous VO give the user flexibility to replace failures without regenerating the whole ad. The video engine must earn its place through controlled evidence.
+**Doctrine:** The video model provides a short convincing motion moment, not the entire ad. Brand accuracy and real human physics matter as much as pace. Give missing product information to a capable reference mode instead of hoping a prompt invents it correctly. Cut past hard liquid physics when that creates a more believable video. Generate separate silent clips, retake locally, build energy with decisive action + edits + a single confident external voiceover.
+

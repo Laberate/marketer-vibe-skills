@@ -5,14 +5,17 @@ Portable plain-Markdown specialist skills for the MarketerVibe UGC workflow.
 ## Skills
 
 - `skills/ugc-ad-strategy/SKILL.md` — **V1.4.0**: product/audience diagnosis, optional research, awareness, angles, hooks, natural UGC copy, claim grounding, and the compact creative-strategy handoff.
-- `skills/ugc-visual-production/SKILL.md` — **V1.2.0**: fast-cut UGC visual production: purposeful short visual beats, simple believable actions, product-use progressions, controlled shot variety, B-roll, payoffs, edit-ready keyframes, and VO-friendly pacing.
+- `skills/ugc-visual-production/SKILL.md` — **V1.3.0**: fast-cut UGC visual production: purposeful short visual beats, simple believable actions, product-use progressions, controlled shot variety, B-roll, payoffs, edit-ready keyframes, and VO-friendly pacing.
 - `skills/image-fidelity/SKILL.md` — **V1.1.0**: photorealism, product invariants, physical scale, material-light integration, human/contact realism, camera realism, environment integration, and a lean QA gate.
 
-## Visual Production V1.2 highlights
+## Visual Production V1.3 highlights
 
-- Separate silent-video workflow: each approved image starts an independently generated silent clip, with continuous external VO added during the edit.
-- Kling model testing compares actual outcomes without prematurely locking a model or version.
-- Continuity and color QA separates source-image mismatch, within-clip drift, and edit mismatch; credit-efficient retakes and test logs are based on credits per usable second.
+- Conditional Kling 4.0 Omni reference routing: when identity-critical product geometry enters from off-frame, route to a reference-capable mode with a distinct full-product reference; a packshot never becomes scene/camera authority.
+- First-frame-only Keyframes for simple actions: fully visible subjects with simple facial or hand movements use only the starting frame; no extra timeline keyframes.
+- Brisk, natural sales motion: engaged, purposeful pacing—decisive entrances with credible acceleration and deceleration, never idle padding or hyperactive acting.
+- Hand and packaging fidelity checks: evaluate hand appearance and newly revealed packaging independently; duplicated printed elements, label changes, and hand morphs are hard failures.
+- Liquid-dispensing alternatives: precise dropper-to-skin transfer is not a default requirement after repeated observed failures—default to cut-over-liquid complexity (applicator detail, hard cut, pat-in) or approved experiments.
+- Independent silent clips and external VO: one approved starting image produces one separately generated silent clip; failed clips are retaken locally and continuous VO is added in the edit.
 
 ## Image Fidelity V1.1 highlights
 
